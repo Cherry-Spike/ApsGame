@@ -7,7 +7,7 @@ import javafx.stage.Stage;
 public class ViewManager {
 	
 	private static final int WIDTH = 800;
-	private static final int HEIGTH = 800;
+	private static final int HEIGTH = 600;
 	private AnchorPane mainPane;
 	private Scene mainScene;
 	private Stage mainStage;
@@ -19,7 +19,8 @@ public class ViewManager {
 		mainStage.setScene(mainScene);
 	}
 	
-	public Stage getMainStage(){
+	public Stage getMainStage() {
 		return mainStage;
 	}
+	
 }
