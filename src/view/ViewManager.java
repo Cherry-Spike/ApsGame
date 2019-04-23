@@ -23,4 +23,8 @@ public class ViewManager {
 		return mainStage;
 	}
 	
+	public void SetNewScene(Scene newScene) {
+		mainStage.setScene(newScene);
+	}
+	
 }
