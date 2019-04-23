@@ -2,6 +2,7 @@ package view;
 
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class ViewManager {
@@ -23,7 +24,8 @@ public class ViewManager {
 		return mainStage;
 	}
 	
-	public void SetNewScene(Scene newScene) {
+	public void SetNewScene(VBox layout) {
+		Scene newScene = new Scene(layout,WIDTH,HEIGTH);
 		mainStage.setScene(newScene);
 	}
 	

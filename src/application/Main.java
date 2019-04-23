@@ -2,7 +2,6 @@ package application;
 	
 import javafx.application.Application;
 import javafx.geometry.Insets;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
@@ -21,31 +20,34 @@ public class Main extends Application {
 			primaryStage.setTitle("City Last Light!");
 			
 		    VBox vb = new VBox();
-		    vb.setPadding(new Insets(10, 50, 50, 50));
+		    vb.setPadding(new Insets(200, 250, 0, 200));
 		    vb.setSpacing(10);
 
 		    // Title
 		    Label lbl = new Label("City Last Light");
-		    lbl.setFont(Font.font("Amble CN", FontWeight.BOLD, 24));
+		    lbl.setFont(Font.font("Amble CN", FontWeight.BOLD, 50));
 		    vb.getChildren().add(lbl);
 
 		    // Buttons
 		    Button btn1 = new Button();
 		    btn1.setText(""
 		    		+ "Iniciar");
+		    btn1.setPrefWidth(400);
+		    btn1.setFont(Font.font("Amble CN", 20));
 		    vb.getChildren().add(btn1);
 
 		    Button btn2 = new Button();
 		    btn2.setText("Créditos");
+		    btn2.setFont(Font.font("Amble CN", 20));
+		    btn2.setPrefWidth(400);
 		    vb.getChildren().add(btn2);
 		    
 		    VBox.setMargin(vb.getChildren().get(1),new Insets(0,50,0,50));
 		    VBox.setMargin(vb.getChildren().get(2),new Insets(0,50,0,45));
 		    
 		 // Adding VBox to the scene
-		    Scene scene = new Scene(vb);
 		    
-		    manager.SetNewScene(scene);
+		    manager.SetNewScene(vb);
 		  		    
 			primaryStage.show();
 		} catch(Exception e) {
