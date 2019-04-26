@@ -12,14 +12,14 @@ import javafx.stage.Stage;
 
 public class ViewManager {
 	
-	private static final int WIDTH = 800;
-	private static final int HEIGTH = 600;
+	private static final int WIDTH = 1200;
+	private static final int HEIGTH = 700;
 	private Pane mainPane;
 	private Scene mainScene;
 	private Stage mainStage;
 	
 	public ViewManager() throws IOException {
-		mainPane = FXMLLoader.load(getClass().getResource("SB_Tela.fxml"));
+		mainPane = FXMLLoader.load(getClass().getResource("SB_TelaInicial.fxml"));
 		mainScene = new Scene(mainPane,WIDTH,HEIGTH);
 		mainStage = new Stage();
 		mainStage.setScene(mainScene);
