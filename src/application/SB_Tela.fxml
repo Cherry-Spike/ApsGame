@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171">
+   <children>
+      <ProgressBar layoutX="291.0" layoutY="266.0" prefHeight="17.0" prefWidth="220.0" progress="0.0" />
+      <Slider layoutX="320.0" layoutY="217.0" />
+      <ToggleButton layoutX="356.0" layoutY="167.0" mnemonicParsing="false" text="ToggleButton" />
+   </children>
+</AnchorPane>
