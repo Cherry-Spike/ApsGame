@@ -1,14 +1,15 @@
 package view;
 
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-
 import java.io.IOException;
-
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import model.CityLastLightBotao;
+import javafx.fxml.FXML;
 
 public class ViewManager {
 	
@@ -19,12 +20,12 @@ public class ViewManager {
 	private Stage mainStage;
 	
 	public ViewManager() throws IOException {
-		mainPane = FXMLLoader.load(getClass().getResource("SB_TelaInicial.fxml"));
+		mainPane = FXMLLoader.load(getClass().getResource("/model/SB_TelaInicial.fxml"));
 		mainScene = new Scene(mainPane,WIDTH,HEIGTH);
 		mainStage = new Stage();
 		mainStage.setScene(mainScene);
-	}
-	
+	}	
+
 	public Stage getMainStage() {
 		return mainStage;
 	}
@@ -33,5 +34,4 @@ public class ViewManager {
 		Scene newScene = new Scene(layout,WIDTH,HEIGTH);
 		mainStage.setScene(newScene);
 	}
-	
 }
