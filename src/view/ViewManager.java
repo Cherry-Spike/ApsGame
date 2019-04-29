@@ -1,14 +1,14 @@
 package view;
 
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import model.CityLastLightBotao;
+import model.CityLastLightBotaoAmarelo;
+import model.CityLastLightBotaoVerde;
 import javafx.fxml.FXML;
 
 public class ViewManager {
@@ -20,11 +20,31 @@ public class ViewManager {
 	private Stage mainStage;
 	
 	public ViewManager() throws IOException {
-		mainPane = FXMLLoader.load(getClass().getResource("/model/SB_TelaInicial.fxml"));
+		mainPane = new AnchorPane();
+		//mainPane = FXMLLoader.load(getClass().getResource("/model/SB_TelaInicial.fxml"));
 		mainScene = new Scene(mainPane,WIDTH,HEIGTH);
 		mainStage = new Stage();
 		mainStage.setScene(mainScene);
-	}	
+		createButtons();
+	}
+	
+	private void createButtons() {
+		CityLastLightBotaoAmarelo Pontuacao = new CityLastLightBotaoAmarelo("Pontuação");
+		Pontuacao.setLayoutX(468);
+		Pontuacao.setLayoutY(432);
+		
+		CityLastLightBotaoAmarelo Sair = new CityLastLightBotaoAmarelo("Sair");
+		Sair.setLayoutX(468);
+		Sair.setLayoutY(539);
+		
+		CityLastLightBotaoVerde Iniciar = new CityLastLightBotaoVerde("Iniciar");
+		Iniciar.setLayoutX(468);
+		Iniciar.setLayoutY(326);
+		
+		mainPane.getChildren().add(Iniciar);
+		mainPane.getChildren().add(Pontuacao);
+		mainPane.getChildren().add(Sair);
+	}
 
 	public Stage getMainStage() {
 		return mainStage;
