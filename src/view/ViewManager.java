@@ -29,18 +29,18 @@ public class ViewManager {
 	}
 	
 	private void createButtons() {
+		CityLastLightBotaoVerde Iniciar = new CityLastLightBotaoVerde("Iniciar");
+		Iniciar.setLayoutX(468);
+		Iniciar.setLayoutY(340);
+		
 		CityLastLightBotaoAmarelo Pontuacao = new CityLastLightBotaoAmarelo("Pontuação");
 		Pontuacao.setLayoutX(468);
-		Pontuacao.setLayoutY(432);
+		Pontuacao.setLayoutY(440);
 		
 		CityLastLightBotaoAmarelo Sair = new CityLastLightBotaoAmarelo("Sair");
 		Sair.setLayoutX(468);
-		Sair.setLayoutY(539);
-		
-		CityLastLightBotaoVerde Iniciar = new CityLastLightBotaoVerde("Iniciar");
-		Iniciar.setLayoutX(468);
-		Iniciar.setLayoutY(326);
-		
+		Sair.setLayoutY(540);
+						
 		mainPane.getChildren().add(Iniciar);
 		mainPane.getChildren().add(Pontuacao);
 		mainPane.getChildren().add(Sair);
