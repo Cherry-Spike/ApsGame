@@ -42,7 +42,7 @@ public class ViewManager {
 		return mainStage;
 	}
 	
-	public void setMenu(CityLastLightBotao botao) {
+	public void setNovoBotao(CityLastLightBotao botao) {
 		botao.setLayoutX(Botao_PosicaoX);
 		PositionCount += 1;
 		botao.setLayoutY(Botao_PosicaoY + 100*PositionCount);
@@ -51,13 +51,13 @@ public class ViewManager {
 	private void createButtons() {
 		
 		CityLastLightBotaoVerde Iniciar = new CityLastLightBotaoVerde("Iniciar");
-		setMenu(Iniciar);
+		setNovoBotao(Iniciar);
 		
 		CityLastLightBotaoAmarelo Pontuacao = new CityLastLightBotaoAmarelo("Pontuação");
-		setMenu(Pontuacao);
+		setNovoBotao(Pontuacao);
 		
 		CityLastLightBotaoAmarelo Sair = new CityLastLightBotaoAmarelo("Sair");
-		setMenu(Sair);
+		setNovoBotao(Sair);
 		
 		mainPane.getChildren().add(Iniciar);
 		mainPane.getChildren().add(Pontuacao);
