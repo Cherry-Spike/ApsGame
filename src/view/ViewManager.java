@@ -43,12 +43,15 @@ public class ViewManager {
 	}
 	
 	public void setNovoBotao(CityLastLightBotao botao) {
+		
 		botao.setLayoutX(Botao_PosicaoX);
 		PositionCount += 1;
 		botao.setLayoutY(Botao_PosicaoY + 100*PositionCount);
+		mainPane.getChildren().add(botao);
+		
 	}
 		
-	private void createButtons() {
+	private void createButtons() {	
 		
 		CityLastLightBotaoVerde Iniciar = new CityLastLightBotaoVerde("Iniciar");
 		setNovoBotao(Iniciar);
@@ -57,24 +60,23 @@ public class ViewManager {
 		setNovoBotao(Pontuacao);
 		
 		CityLastLightBotaoAmarelo Sair = new CityLastLightBotaoAmarelo("Sair");
-		setNovoBotao(Sair);
+		setNovoBotao(Sair);		
 		
-		mainPane.getChildren().add(Iniciar);
-		mainPane.getChildren().add(Pontuacao);
-		mainPane.getChildren().add(Sair);
 	}
 	
 	private void setTitle() {
+		
 		TituloTelaInicial Titulo = new TituloTelaInicial("City Last Light");
 		Titulo.setLayoutX(370);
 		Titulo.setLayoutY(40);
 		mainPane.getChildren().add(Titulo);
+		
 	}
 
-	private void setBackground() {
+	private void setBackground() {		
 		Image backgroundImage = new Image("/view/resources/CityBG.png", 1200,700,false,true); //Background Provisorio!!!;
 		BackgroundImage background = new BackgroundImage(backgroundImage, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, null);
-		mainPane.setBackground(new Background(background));
+		mainPane.setBackground(new Background(background));		
 	}		
 	
 }
