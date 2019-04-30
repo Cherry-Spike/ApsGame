@@ -2,7 +2,7 @@ package model;
 
 import javafx.scene.paint.Color;
 
-public class CityLastLightBotaoVerde extends CityLastLightBotaoAmarelo {
+public class CityLastLightBotaoVerde extends CityLastLightBotao {
 		
 		public CityLastLightBotaoVerde(String text) {		
 			super(text);	

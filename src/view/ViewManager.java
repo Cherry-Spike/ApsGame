@@ -1,15 +1,18 @@
 package view;
 
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.Pane;
 import java.io.IOException;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.CityLastLightBotaoAmarelo;
 import model.CityLastLightBotaoVerde;
-import javafx.fxml.FXML;
 
 public class ViewManager {
 	
@@ -26,8 +29,18 @@ public class ViewManager {
 		mainStage = new Stage();
 		mainStage.setScene(mainScene);
 		createButtons();
+		setBackground();
+	}	
+	
+	public Stage getMainStage() {
+		return mainStage;
 	}
 	
+	public void SetNewScene(VBox layout) {
+		Scene newScene = new Scene(layout,WIDTH,HEIGTH);
+		mainStage.setScene(newScene);
+	}
+		
 	private void createButtons() {
 		CityLastLightBotaoVerde Iniciar = new CityLastLightBotaoVerde("Iniciar");
 		Iniciar.setLayoutX(468);
@@ -46,12 +59,10 @@ public class ViewManager {
 		mainPane.getChildren().add(Sair);
 	}
 
-	public Stage getMainStage() {
-		return mainStage;
+	private void setBackground() {
+		Image backgroundImage = new Image("/view/resources/CityBG.png", 1200,700,false,true); //Background Provisorio!!!;
+		BackgroundImage background = new BackgroundImage(backgroundImage, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, null);
+		mainPane.setBackground(new Background(background));
 	}
 	
-	public void SetNewScene(VBox layout) {
-		Scene newScene = new Scene(layout,WIDTH,HEIGTH);
-		mainStage.setScene(newScene);
-	}
 }
