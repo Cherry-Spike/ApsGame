@@ -13,6 +13,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.CityLastLightBotaoAmarelo;
 import model.CityLastLightBotaoVerde;
+import model.TituloTelaInicial;
 
 public class ViewManager {
 	
@@ -29,6 +30,7 @@ public class ViewManager {
 		mainStage = new Stage();
 		mainStage.setScene(mainScene);
 		createButtons();
+		setTitle();
 		setBackground();
 	}	
 	
@@ -36,7 +38,7 @@ public class ViewManager {
 		return mainStage;
 	}
 	
-	public void SetNewScene(VBox layout) {
+	public void setNewScene(VBox layout) {
 		Scene newScene = new Scene(layout,WIDTH,HEIGTH);
 		mainStage.setScene(newScene);
 	}
@@ -57,6 +59,13 @@ public class ViewManager {
 		mainPane.getChildren().add(Iniciar);
 		mainPane.getChildren().add(Pontuacao);
 		mainPane.getChildren().add(Sair);
+	}
+	
+	private void setTitle() {
+		TituloTelaInicial Titulo = new TituloTelaInicial("City Last Light");
+		Titulo.setLayoutX(370);
+		Titulo.setLayoutY(40);
+		mainPane.getChildren().add(Titulo);
 	}
 
 	private void setBackground() {

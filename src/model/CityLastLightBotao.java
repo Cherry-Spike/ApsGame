@@ -17,14 +17,14 @@ public abstract class CityLastLightBotao extends Button {
 	
 	public CityLastLightBotao(String text) {
 		setText(text);
-		SetButtonFont();
+		SetFont();
 		setPrefWidth(267);
 		setPrefHeight(77);
 		setStyle(BotaoSolto);
 		InitializerListeners();
 	}
 	
-	public void SetButtonFont() {
+	public void SetFont() {
 		setFont(Font.font("Arial", FontWeight.BOLD, FontPosture.ITALIC, 20));
 	}
 	
