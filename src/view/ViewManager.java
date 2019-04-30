@@ -10,6 +10,7 @@ import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.Pane;
 import java.io.IOException;
 import javafx.stage.Stage;
+import model.CityLastLightBotao;
 import model.CityLastLightBotaoAmarelo;
 import model.CityLastLightBotaoVerde;
 import model.TituloTelaInicial;
@@ -18,9 +19,13 @@ public class ViewManager {
 	
 	private static final int WIDTH = 1200;
 	private static final int HEIGTH = 700;
+	private static final int Botao_PosicaoX = 468;
+	private static final int Botao_PosicaoY = 240;
+	private static int PositionCount = 0;	
 	private Pane mainPane;
 	private Scene mainScene;
-	private Stage mainStage;
+	private Stage mainStage;	
+
 	
 	public ViewManager() throws IOException {
 		mainPane = new AnchorPane();
@@ -36,20 +41,24 @@ public class ViewManager {
 	public Stage getMainStage() {
 		return mainStage;
 	}
+	
+	public void setMenu(CityLastLightBotao botao) {
+		botao.setLayoutX(Botao_PosicaoX);
+		PositionCount += 1;
+		botao.setLayoutY(Botao_PosicaoY + 100*PositionCount);
+	}
 		
 	private void createButtons() {
+		
 		CityLastLightBotaoVerde Iniciar = new CityLastLightBotaoVerde("Iniciar");
-		Iniciar.setLayoutX(468);
-		Iniciar.setLayoutY(340);
+		setMenu(Iniciar);
 		
 		CityLastLightBotaoAmarelo Pontuacao = new CityLastLightBotaoAmarelo("Pontuação");
-		Pontuacao.setLayoutX(468);
-		Pontuacao.setLayoutY(440);
+		setMenu(Pontuacao);
 		
 		CityLastLightBotaoAmarelo Sair = new CityLastLightBotaoAmarelo("Sair");
-		Sair.setLayoutX(468);
-		Sair.setLayoutY(540);
-						
+		setMenu(Sair);
+		
 		mainPane.getChildren().add(Iniciar);
 		mainPane.getChildren().add(Pontuacao);
 		mainPane.getChildren().add(Sair);
@@ -66,8 +75,6 @@ public class ViewManager {
 		Image backgroundImage = new Image("/view/resources/CityBG.png", 1200,700,false,true); //Background Provisorio!!!;
 		BackgroundImage background = new BackgroundImage(backgroundImage, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, null);
 		mainPane.setBackground(new Background(background));
-	}
-	
-	
+	}		
 	
 }
