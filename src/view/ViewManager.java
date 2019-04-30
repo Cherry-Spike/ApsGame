@@ -9,7 +9,6 @@ import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.Pane;
 import java.io.IOException;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.CityLastLightBotaoAmarelo;
 import model.CityLastLightBotaoVerde;
@@ -36,11 +35,6 @@ public class ViewManager {
 	
 	public Stage getMainStage() {
 		return mainStage;
-	}
-	
-	public void setNewScene(VBox layout) {
-		Scene newScene = new Scene(layout,WIDTH,HEIGTH);
-		mainStage.setScene(newScene);
 	}
 		
 	private void createButtons() {
@@ -73,5 +67,7 @@ public class ViewManager {
 		BackgroundImage background = new BackgroundImage(backgroundImage, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, null);
 		mainPane.setBackground(new Background(background));
 	}
+	
+	
 	
 }

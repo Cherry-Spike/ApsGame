@@ -12,7 +12,7 @@ public class TituloTelaInicial extends Label {
 		setPrefWidth(500);
 		setPrefHeight(300);
 		SetFont();
-		setTextFill(Color.rgb(0, 6, 61));
+		setTextFill(Color.rgb(37, 0, 61));
 	}
 	
 	public void SetFont() {
