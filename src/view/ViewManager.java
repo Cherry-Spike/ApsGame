@@ -1,5 +1,8 @@
 package view;
 
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
@@ -13,6 +16,7 @@ import javafx.stage.Stage;
 import model.CityLastLightBotao;
 import model.CityLastLightBotaoAmarelo;
 import model.CityLastLightBotaoVerde;
+import model.CityLastLightBotaoVoltar;
 import model.TituloTelaInicial;
 
 public class ViewManager {
@@ -25,7 +29,8 @@ public class ViewManager {
 	private Pane mainPane;
 	private Scene mainScene;
 	private Stage mainStage;	
-
+	
+	private PontuacaoSubScene pontuacaoSubScene;
 	
 	public ViewManager() throws IOException {
 		mainPane = new AnchorPane();
@@ -33,15 +38,19 @@ public class ViewManager {
 		mainScene = new Scene(mainPane,WIDTH,HEIGTH);
 		mainStage = new Stage();
 		mainStage.setScene(mainScene);
-		createButtons();
+		
+		setMenu();
 		setTitle();
 		setBackground();
+		setSubScene();
+		
 	}	
 	
 	public Stage getMainStage() {
 		return mainStage;
 	}
 	
+	//Menu & Botoes
 	public void setNovoBotao(CityLastLightBotao botao) {
 		
 		botao.setLayoutX(Botao_PosicaoX);
@@ -50,33 +59,57 @@ public class ViewManager {
 		mainPane.getChildren().add(botao);
 		
 	}
-		
-	private void createButtons() {	
-		
+	
+	private void setMenu() {					
+		createBotaoIniciar();		
+		createBotaoPontuacao();		
+		createBotaoSair();			
+	}
+	
+	private void createBotaoIniciar() {		
 		CityLastLightBotaoVerde Iniciar = new CityLastLightBotaoVerde("Iniciar");
-		setNovoBotao(Iniciar);
-		
+		setNovoBotao(Iniciar);		
+	}
+	
+	private void createBotaoPontuacao() {		
 		CityLastLightBotaoAmarelo Pontuacao = new CityLastLightBotaoAmarelo("Pontuação");
 		setNovoBotao(Pontuacao);
 		
-		CityLastLightBotaoAmarelo Sair = new CityLastLightBotaoAmarelo("Sair");
-		setNovoBotao(Sair);		
-		
+		Pontuacao.setOnAction(new EventHandler<ActionEvent>() {			
+			@Override
+			public void handle(ActionEvent event) {pontuacaoSubScene.moveSubScene();}
+		});
 	}
 	
-	private void setTitle() {
-		
+	private void createBotaoSair() {	
+		CityLastLightBotaoAmarelo Sair = new CityLastLightBotaoAmarelo("Sair");
+		setNovoBotao(Sair);
+		Sair.setOnAction(actionEvent -> Platform.exit());		
+	}
+	
+	//Titulo	
+	private void setTitle() {	
 		TituloTelaInicial Titulo = new TituloTelaInicial("City Last Light");
 		Titulo.setLayoutX(370);
 		Titulo.setLayoutY(40);
-		mainPane.getChildren().add(Titulo);
-		
+		mainPane.getChildren().add(Titulo);		
 	}
-
+	
+	//Background & Scenes
 	private void setBackground() {		
 		Image backgroundImage = new Image("/view/resources/CityBG.png", 1200,700,false,true); //Background Provisorio!!!;
 		BackgroundImage background = new BackgroundImage(backgroundImage, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, null);
 		mainPane.setBackground(new Background(background));		
-	}		
+	}
+	
+	private void setSubScene() {
+		pontuacaoSubScene = new PontuacaoSubScene();	
+		mainPane.getChildren().add(pontuacaoSubScene);
+		
+		CityLastLightBotaoVoltar Voltar = new CityLastLightBotaoVoltar("");
+		Voltar.setLayoutX(90);
+		Voltar.setLayoutY(420);
+		pontuacaoSubScene.getPane().getChildren().add(Voltar);
+	}
 	
 }

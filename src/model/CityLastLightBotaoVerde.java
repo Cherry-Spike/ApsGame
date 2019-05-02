@@ -8,9 +8,9 @@ public class CityLastLightBotaoVerde extends CityLastLightBotao {
 			super(text);	
 			//SetFont = "-fx-text-fill: white; -fx-font: bold italic 20pt \"Arial\"; ;";
 			SetButtonColor();
-			BotaoPressionado = "-fx-background-color: transparent; -fx-background-image: url('Model/resources/BotaoVerdePressionado.png');";
-			BotaoSolto = "-fx-background-color: transparent; -fx-background-image: url('Model/resources/BotaoVerdeSolto.png');";
-			BotaoAcionado = "-fx-background-color: transparent; -fx-background-image: url('Model/resources/BotaoVerdeClaro.png');";
+			BotaoPressionado = "-fx-background-color: transparent; -fx-cursor: hand; -fx-background-image: url('Model/resources/BotaoVerdePressionado.png');";
+			BotaoSolto = "-fx-background-color: transparent; -fx-cursor: hand; -fx-background-image: url('Model/resources/BotaoVerdeSolto.png');";
+			BotaoAcionado = "-fx-background-color: transparent; -fx-cursor: hand; -fx-background-image: url('Model/resources/BotaoVerdeClaro.png');";
 			setStyle(BotaoSolto);
 		}
 		
