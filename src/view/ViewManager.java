@@ -26,7 +26,7 @@ public class ViewManager {
 	private static final int Botao_PosicaoX = 468;
 	private static final int Botao_PosicaoY = 240;
 	private static int PositionCount = 0;	
-	private Pane mainPane;
+	private AnchorPane mainPane;
 	private Scene mainScene;
 	private Stage mainStage;	
 	
@@ -68,7 +68,14 @@ public class ViewManager {
 	
 	private void createBotaoIniciar() {		
 		CityLastLightBotaoVerde Iniciar = new CityLastLightBotaoVerde("Iniciar");
-		setNovoBotao(Iniciar);		
+		setNovoBotao(Iniciar);
+		Iniciar.setOnAction(new EventHandler<ActionEvent>() {			
+			@Override
+			public void handle(ActionEvent event) {
+					MainGame mainGameScene = new MainGame();
+					mainStage.setScene(mainGameScene.SetMainGameScene());
+				}
+		});
 	}
 	
 	private void createBotaoPontuacao() {		
