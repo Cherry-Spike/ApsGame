@@ -45,4 +45,12 @@ public class PontuacaoSubScene extends SubScene {
 	public Pane getPane() {
 		return (Pane) this.getRoot();
 	}
+	
+	public void closePane() {
+		TranslateTransition transition = new TranslateTransition();
+		transition.setDuration(Duration.seconds(0.3));
+		transition.setNode(this);
+		transition.setToY(700);		
+		transition.play();
+	}
 }
