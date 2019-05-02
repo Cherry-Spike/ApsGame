@@ -44,7 +44,7 @@ public class ViewManager {
 		setBackground();
 		setSubScene();
 		
-	}	
+	}
 	
 	public Stage getMainStage() {
 		return mainStage;
@@ -94,6 +94,18 @@ public class ViewManager {
 		Sair.setOnAction(actionEvent -> Platform.exit());		
 	}
 	
+	private void createBotaoVoltar() {
+		CityLastLightBotaoVoltar Voltar = new CityLastLightBotaoVoltar("");
+		Voltar.setLayoutX(90);
+		Voltar.setLayoutY(420);
+		pontuacaoSubScene.getPane().getChildren().add(Voltar);
+		
+		Voltar.setOnAction(new EventHandler<ActionEvent>() {			
+			@Override
+			public void handle(ActionEvent event) {pontuacaoSubScene.closePane();}
+		});
+	}
+	
 	//Titulo	
 	private void setTitle() {	
 		TituloTelaInicial Titulo = new TituloTelaInicial("City Last Light");
@@ -112,11 +124,7 @@ public class ViewManager {
 	private void setSubScene() {
 		pontuacaoSubScene = new PontuacaoSubScene();	
 		mainPane.getChildren().add(pontuacaoSubScene);
-		
-		CityLastLightBotaoVoltar Voltar = new CityLastLightBotaoVoltar("");
-		Voltar.setLayoutX(90);
-		Voltar.setLayoutY(420);
-		pontuacaoSubScene.getPane().getChildren().add(Voltar);
+		createBotaoVoltar();
 	}
 	
 }
