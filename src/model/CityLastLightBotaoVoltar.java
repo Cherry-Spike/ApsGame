@@ -6,7 +6,7 @@ public class CityLastLightBotaoVoltar extends CityLastLightBotao {
 		super(text);
 		BotaoPressionado = "-fx-background-color: transparent; -fx-cursor: hand; -fx-background-image: url('Model/resources/BackButton.png');";
 		BotaoSolto = "-fx-background-color: transparent; -fx-cursor: hand; -fx-background-image: url('Model/resources/BackButton.png');";
-		BotaoAcionado = "-fx-background-color: transparent; -fx-cursor: hand; -fx-background-image: url('Model/resources/BackButton.png');";
+		BotaoAcionado = "-fx-background-color: transparent; -fx-cursor: hand; -fx-background-image: url('Model/resources/BackButtonActive.png');";
 		setPrefWidth(67);
 		setPrefHeight(63);
 		setStyle(BotaoSolto);
