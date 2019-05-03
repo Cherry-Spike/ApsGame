@@ -68,7 +68,14 @@ public class ViewManager {
 	
 	private void createBotaoIniciar() {		
 		CityLastLightBotaoVerde Iniciar = new CityLastLightBotaoVerde("Iniciar");
-		setNovoBotao(Iniciar);		
+		setNovoBotao(Iniciar);
+		Iniciar.setOnAction(new EventHandler<ActionEvent>() {			
+			@Override
+			public void handle(ActionEvent event) {
+					MainGame mainGameScene = new MainGame();
+					mainStage.setScene(mainGameScene.SetMainGameScene());
+				}
+		});
 	}
 	
 	private void createBotaoPontuacao() {		
