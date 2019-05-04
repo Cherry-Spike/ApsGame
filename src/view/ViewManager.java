@@ -72,8 +72,8 @@ public class ViewManager {
 		Iniciar.setOnAction(new EventHandler<ActionEvent>() {			
 			@Override
 			public void handle(ActionEvent event) {
-					MainGame mainGameScene = new MainGame();
-					mainStage.setScene(mainGameScene.SetMainGameScene());
+					GameViewManager gameManeger = new GameViewManager();
+					gameManeger.CreateNewGame(mainStage);
 				}
 		});
 	}
