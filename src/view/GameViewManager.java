@@ -4,8 +4,8 @@ import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import model.JanelaTripla;
-import model.TestWindow;
+import model.window.JanelaTripla;
+import model.window.TestWindow;
 
 public class GameViewManager {
 

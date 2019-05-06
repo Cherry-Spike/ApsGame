@@ -10,14 +10,13 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.Pane;
 import java.io.IOException;
 import javafx.stage.Stage;
-import model.CityLastLightBotao;
-import model.CityLastLightBotaoAmarelo;
-import model.CityLastLightBotaoVerde;
-import model.CityLastLightBotaoVoltar;
 import model.TituloTelaInicial;
+import model.button.CityLastLightBotao;
+import model.button.CityLastLightBotaoAmarelo;
+import model.button.CityLastLightBotaoVerde;
+import model.button.CityLastLightBotaoVoltar;
 
 public class ViewManager {
 	

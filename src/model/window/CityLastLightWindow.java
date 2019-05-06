@@ -1,17 +1,17 @@
-package model;
+package model.window;
 
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 
-public abstract class Window extends Button {
+public abstract class CityLastLightWindow extends Button {
 	
 	protected String WindowLightOn;
 	protected String WindowLightOff;
 	protected int Width, Height;
 	
-	public Window(int width, int height) {
+	public CityLastLightWindow(int width, int height) {
 		setPrefWidth(width);
 		setPrefHeight(height);
 		InitializerListeners();
