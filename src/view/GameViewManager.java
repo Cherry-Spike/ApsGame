@@ -2,7 +2,12 @@ package view;
 
 import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
 import javafx.stage.Stage;
 import model.window.JanelaTripla;
 import model.window.TestWindow;
@@ -22,6 +27,7 @@ public class GameViewManager {
 	public GameViewManager() {
 		InitializeStage();
 		CreateKeyListeners();
+		setBackground();
 	}
 
 	private void CreateKeyListeners() {
@@ -59,5 +65,11 @@ public class GameViewManager {
 			}
 		};
 		gameTimer.start();
+	}	
+	
+	private void setBackground() {		
+		Image backgroundImage = new Image("/view/resources/GameCity.png", 1200,700,false,false);
+		BackgroundImage background = new BackgroundImage(backgroundImage, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, null);
+		gamePane.setBackground(new Background(background));		
 	}
 }
