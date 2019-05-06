@@ -14,7 +14,6 @@ public abstract class Window extends Button {
 	public Window(int width, int height) {
 		setPrefWidth(width);
 		setPrefHeight(height);
-		setStyle(WindowLightOn);
 		InitializerListeners();
 	}
 	

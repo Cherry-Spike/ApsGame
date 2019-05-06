@@ -10,7 +10,6 @@ import javafx.scene.text.FontWeight;
 
 public abstract class CityLastLightBotao extends Button {
 	
-	//protected String SetFont = "-fx-font: bold italic 20pt \"Arial\";";
 	protected String BotaoPressionado;
 	protected String BotaoSolto;
 	protected String BotaoAcionado;
@@ -20,7 +19,6 @@ public abstract class CityLastLightBotao extends Button {
 		SetFont();
 		setPrefWidth(267);
 		setPrefHeight(77);
-		setStyle(BotaoSolto);
 		InitializerListeners();
 	}
 	

@@ -4,6 +4,7 @@ import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import model.JanelaTripla;
 import model.TestWindow;
 
 public class GameViewManager {
@@ -13,7 +14,7 @@ public class GameViewManager {
 	private AnchorPane gamePane;
 	private Stage menuStage;
 	private AnimationTimer gameTimer;
-	private TestWindow window;
+	private JanelaTripla window;
 	
 	private static final int WIDTH = 1200;
 	private static final int HEIGTH = 700;
@@ -44,7 +45,7 @@ public class GameViewManager {
 	}
 	
 	private void CreateWindows() {
-		window = new TestWindow();
+		window = new JanelaTripla();
 		gamePane.getChildren().add(window);
 	}
 
