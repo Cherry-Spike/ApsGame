@@ -5,25 +5,25 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 
-public class Janela extends Button{
+public abstract class Window extends Button {
 	
-	protected String JanelaAcesa = "-fx-background-color: transparent; -fx-background-image: url('Model/resources/BotaoAmareloPressionado.png');";
-	protected String JanelaApagada = "-fx-background-color: transparent; -fx-background-image: url('Model/resources/BotaoAmareloSolto.png');";
+	protected String WindowLightOn;
+	protected String WindowLightOff;
+	protected int Width, Height;
 	
-	public Janela() {
-		setPrefWidth(267);
-		setPrefHeight(77);
-		setStyle(JanelaApagada);
+	public Window(int width, int height) {
+		setPrefWidth(width);
+		setPrefHeight(height);
+		setStyle(WindowLightOn);
 		InitializerListeners();
 	}
 	
-	
-	public void SetJanelaAcesa() {
-		setStyle(JanelaAcesa);
+	public void SetWindowLightOn() {
+		setStyle(WindowLightOn);
 	}
 	
-	public void SetJanelaApagada() {
-		setStyle(JanelaApagada);		
+	public void SetWindowLightOff() {
+		setStyle(WindowLightOff);		
 	}
 	
 	private void InitializerListeners() {
@@ -32,7 +32,7 @@ public class Janela extends Button{
 			@Override
 			public void handle(MouseEvent event) {				
 				if(event.getButton().equals(MouseButton.PRIMARY)) {
-					SetJanelaAcesa();
+					SetWindowLightOff();
 				}
 			}
 		});
@@ -41,9 +41,10 @@ public class Janela extends Button{
 			@Override
 			public void handle(MouseEvent event) {				
 				if(event.getButton().equals(MouseButton.PRIMARY)) {
-					SetJanelaApagada();
+					SetWindowLightOff();
 				}
 			}
-		});		
+		});
 	}
+
 }
