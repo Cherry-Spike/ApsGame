@@ -9,21 +9,26 @@ public abstract class Window extends Button {
 	
 	protected String WindowLightOn;
 	protected String WindowLightOff;
+	protected boolean lightON = true;
 	protected int Width, Height;
 	
-	public Window(int width, int height) {
+	public Window(int width, int height, int posX, int posY) {
 		setPrefWidth(width);
 		setPrefHeight(height);
-		setStyle(WindowLightOn);
+		setLayoutX(posX);
+		setLayoutY(posY);
+		SetWindowLightOn();
 		InitializerListeners();
 	}
 	
 	public void SetWindowLightOn() {
 		setStyle(WindowLightOn);
+		lightON = true;
 	}
 	
 	public void SetWindowLightOff() {
-		setStyle(WindowLightOff);		
+		setStyle(WindowLightOff);
+		lightON = false;
 	}
 	
 	private void InitializerListeners() {
@@ -45,6 +50,18 @@ public abstract class Window extends Button {
 				}
 			}
 		});
+		
+		setOnMouseClicked(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent event) {				
+				if(event.getButton().equals(MouseButton.PRIMARY)) {
+					SetWindowLightOff();
+				}
+			}
+		});
 	}
-
+	
+	public boolean GetlightON() {
+		return lightON;
+	}
 }
