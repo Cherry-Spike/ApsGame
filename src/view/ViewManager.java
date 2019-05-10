@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
@@ -33,7 +34,6 @@ public class ViewManager {
 	
 	public ViewManager() throws IOException {
 		mainPane = new AnchorPane();
-		//mainPane = FXMLLoader.load(getClass().getResource("/model/SB_TelaInicial.fxml"));
 		mainScene = new Scene(mainPane,WIDTH,HEIGTH);
 		mainStage = new Stage();
 		mainStage.setScene(mainScene);
@@ -106,11 +106,13 @@ public class ViewManager {
 	}
 	
 	//Titulo	
-	private void setTitle() {	
-		TituloTelaInicial Titulo = new TituloTelaInicial("City Last Light");
-		Titulo.setLayoutX(370);
-		Titulo.setLayoutY(40);
-		mainPane.getChildren().add(Titulo);		
+	private void setTitle() {
+		final ImageView selectedImage = new ImageView();
+		Image Titulo = new Image("/view/resources/TelaInicial3.png", 1200,71,false,true);
+		selectedImage.setImage(Titulo);
+		selectedImage.setLayoutX(25);
+		selectedImage.setLayoutY(120);
+		mainPane.getChildren().add(selectedImage);		
 	}
 	
 	//Background & Scenes

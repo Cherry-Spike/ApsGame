@@ -13,7 +13,7 @@ import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.stage.Stage;
-import model.window.TestWindow;
+import model.window.JanelaTripla;
 
 public class GameViewManager {
 
@@ -22,8 +22,8 @@ public class GameViewManager {
 	private AnchorPane gamePane;
 	private Stage menuStage;
 	private AnimationTimer gameTimer;
-	private TestWindow window, w2, w3, w4, w5, randomW;
-	private List<TestWindow> listWindows;
+	private JanelaTripla randomW;
+	private List<JanelaTripla> listWindows;
 	
 	private static int counter = 0;
 	private static final int WIDTH = 1200;
@@ -50,30 +50,44 @@ public class GameViewManager {
 	public void CreateNewGame(Stage menuStage) {
 		try {
 			this.menuStage = menuStage;
+			gameStage.show();
 			this.menuStage.hide();
 			CreateWindows();
 			CreateGameLoop();
-			gameStage.show();
+			
 		} catch (Exception e) {
 			e.getMessage();
-		}
-		
+		}		
 	}
 	
 	private void CreateWindows() {
-		listWindows = new ArrayList<TestWindow>();
-		window = new TestWindow(50,70);
-		w2 = new TestWindow(50,170);
-		w3 = new TestWindow(50,270);
-		w4 = new TestWindow(50,370);
-		w5 = new TestWindow(50,470);
-		listWindows.add(window);
+		
+		JanelaTripla w1, w2, w3, w4, w5, w6, w7, w8, w9, w10;
+		
+		listWindows = new ArrayList<JanelaTripla>();
+		w1 = new JanelaTripla(106,297);
+		w2 = new JanelaTripla(106,361);
+		w3 = new JanelaTripla(106,425);
+		w4 = new JanelaTripla(106,489);
+		w5 = new JanelaTripla(106,553);
+		w6 = new JanelaTripla(187,297);
+		w7 = new JanelaTripla(187,361);
+		w8 = new JanelaTripla(187,425);
+		w9 = new JanelaTripla(187,489);
+		w10 = new JanelaTripla(187,553);		
+		listWindows.add(w1);
 		listWindows.add(w2);
 		listWindows.add(w3);
 		listWindows.add(w4);
 		listWindows.add(w5);
+		listWindows.add(w6);
+		listWindows.add(w7);
+		listWindows.add(w8);
+		listWindows.add(w9);
+		listWindows.add(w10);
 		gamePane.getChildren().addAll(listWindows);
-		gamePane.getChildren().add(window);
+		gamePane.getChildren().add(w1);
+		
 	}
 
 	private void CreateGameLoop() {

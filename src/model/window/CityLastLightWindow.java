@@ -8,6 +8,7 @@ import javafx.scene.input.MouseEvent;
 public abstract class CityLastLightWindow extends Button {
 	
 	protected String WindowLightOn;
+	protected String WindowLightActive;
 	protected String WindowLightOff;
 	protected boolean lightON = true;
 	protected int Width, Height;
@@ -28,6 +29,11 @@ public abstract class CityLastLightWindow extends Button {
 	public void SetWindowLightOff() {
 		setStyle(WindowLightOff);
 		lightON = false;
+		this.setDisable(true);
+	}
+	
+	public void SetWindowLightActive() {
+		setStyle(WindowLightActive);
 	}
 	
 	private void InitializerListeners() {
@@ -47,6 +53,20 @@ public abstract class CityLastLightWindow extends Button {
 				if(event.getButton().equals(MouseButton.PRIMARY)) {
 					SetWindowLightOff();
 				}
+			}
+		});
+		
+		setOnMouseEntered(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent event) {				
+					SetWindowLightActive();
+			}
+		});
+
+		setOnMouseExited(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent event) {				
+					SetWindowLightOn();
 			}
 		});
 	}
