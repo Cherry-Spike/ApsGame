@@ -13,7 +13,6 @@ import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.stage.Stage;
-import model.window.JanelaTripla;
 import model.window.TestWindow;
 
 public class GameViewManager {
@@ -25,7 +24,6 @@ public class GameViewManager {
 	private AnimationTimer gameTimer;
 	private TestWindow window, w2, w3, w4, w5, randomW;
 	private List<TestWindow> listWindows;
-	private JanelaTripla window;
 	
 	private static int counter = 0;
 	private static final int WIDTH = 1200;
@@ -75,7 +73,6 @@ public class GameViewManager {
 		listWindows.add(w4);
 		listWindows.add(w5);
 		gamePane.getChildren().addAll(listWindows);
-		window = new JanelaTripla();
 		gamePane.getChildren().add(window);
 	}
 
@@ -88,13 +85,7 @@ public class GameViewManager {
 			}
 		};
 		gameTimer.start();
-	}	
-	
-	private void setBackground() {		
-		Image backgroundImage = new Image("/view/resources/GameCity.png", 1200,700,false,false);
-		BackgroundImage background = new BackgroundImage(backgroundImage, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, null);
-		gamePane.setBackground(new Background(background));		
-	}
+	}		
 
 	protected void RandomWindows() {
 		
@@ -110,5 +101,11 @@ public class GameViewManager {
 			counter = 0;
 		}
 		counter = 0;
+	}	
+	
+	private void setBackground() {		
+		Image backgroundImage = new Image("/view/resources/GameCity.png", 1200,700,false,false);
+		BackgroundImage background = new BackgroundImage(backgroundImage, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, null);
+		gamePane.setBackground(new Background(background));		
 	}
 }

@@ -9,20 +9,25 @@ public abstract class CityLastLightWindow extends Button {
 	
 	protected String WindowLightOn;
 	protected String WindowLightOff;
+	protected boolean lightON = true;
 	protected int Width, Height;
 	
-	public CityLastLightWindow(int width, int height) {
+	public CityLastLightWindow(int width, int height,  int posX, int posY) {
 		setPrefWidth(width);
 		setPrefHeight(height);
+		setLayoutX(posX);
+		setLayoutY(posY);
 		InitializerListeners();
 	}
 	
 	public void SetWindowLightOn() {
 		setStyle(WindowLightOn);
+		lightON = true;
 	}
 	
 	public void SetWindowLightOff() {
-		setStyle(WindowLightOff);		
+		setStyle(WindowLightOff);
+		lightON = false;
 	}
 	
 	private void InitializerListeners() {
@@ -44,6 +49,10 @@ public abstract class CityLastLightWindow extends Button {
 				}
 			}
 		});
+	}
+	
+	public boolean GetlightON() {
+		return lightON;
 	}
 
 }
