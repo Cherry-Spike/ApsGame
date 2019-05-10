@@ -9,8 +9,8 @@ import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
-import model.CityLastLightBotao;
-import model.CityLastLightBotaoVerde;
+import model.button.CityLastLightBotao;
+import model.button.CityLastLightBotaoVerde;
 
 public class PontuacaoSubScene extends SubScene {
 
