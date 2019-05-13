@@ -13,7 +13,6 @@ import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import java.io.IOException;
 import javafx.stage.Stage;
-import model.TituloTelaInicial;
 import model.button.CityLastLightBotao;
 import model.button.CityLastLightBotaoAmarelo;
 import model.button.CityLastLightBotaoVerde;

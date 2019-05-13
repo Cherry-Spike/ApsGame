@@ -27,9 +27,9 @@ public abstract class CityLastLightWindow extends Button {
 	}
 	
 	public void SetWindowLightOff() {
-		setStyle(WindowLightOff);
 		lightON = false;
-		this.setDisable(true);
+		DisableWindow();
+		setStyle(WindowLightOff);
 	}
 	
 	public void SetWindowLightActive() {
@@ -42,7 +42,7 @@ public abstract class CityLastLightWindow extends Button {
 			@Override
 			public void handle(MouseEvent event) {				
 				if(event.getButton().equals(MouseButton.PRIMARY)) {
-					SetWindowLightOff();
+					SetWindowLightOn();
 				}
 			}
 		});
@@ -66,13 +66,23 @@ public abstract class CityLastLightWindow extends Button {
 		setOnMouseExited(new EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent event) {				
-					SetWindowLightOn();
+					SetWindowLightOn();					
 			}
 		});
 	}
 	
 	public boolean GetlightON() {
 		return lightON;
+	}
+	
+	public void EnableWindow() {
+		this.setDisabled(false);
+		this.setVisible(true);
+	}
+	
+	public void DisableWindow() {
+		this.setDisabled(true);
+		this.setVisible(false);
 	}
 
 }
