@@ -22,8 +22,8 @@ public abstract class CityLastLightWindow extends Button {
 	}
 	
 	public void SetWindowLightOn() {
-		setStyle(WindowLightOn);
 		lightON = true;
+		setStyle(WindowLightOn);
 	}
 	
 	public void SetWindowLightOff() {

@@ -82,8 +82,7 @@ public class GameViewManager {
 		listWindows.add(w8);
 		listWindows.add(w9);
 		listWindows.add(w10);
-		gamePane.getChildren().addAll(listWindows);
-		
+		gamePane.getChildren().addAll(listWindows);		
 	}
 
 	private void CreateGameLoop() {
@@ -101,20 +100,20 @@ public class GameViewManager {
 		
 		for (int i = 0; i < listWindows.size(); i++) {
 			if(listWindows.get(i).GetlightON() == false) {
-				listWindows.get(i).EnableWindow();
-				listWindows.get(i).SetWindowLightOn();
+				//listWindows.get(i).EnableWindow();
+				//listWindows.get(i).SetWindowLightOn();
 				counter++;
 			}
-			/*if(counter == 9){
+			if(counter == 10){
 				Random r = new Random();
-				randomW = listWindows.get(r.nextInt(5));
+				randomW = listWindows.get(r.nextInt(10));
 				randomW.EnableWindow();
 				randomW.SetWindowLightOn();
 				counter = 0;
-			}*/
+			}
 		
 		}
-		counter = 0;
+		//counter = 0;
 	}
 	
 	private void SetSkyBackground() {
