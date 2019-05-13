@@ -51,8 +51,8 @@ public class GameViewManager {
 			this.menuStage = menuStage;
 			this.menuStage.hide();
 			gameStage.show();
-			setSkyBackground();
-			setCityBackground();
+			SetSkyBackground();
+			SetCityBackground();
 			CreateWindows();
 			CreateGameLoop();			
 	}
@@ -90,8 +90,8 @@ public class GameViewManager {
 		AnimationTimer gameTimer = new AnimationTimer() {		
 			@Override
 			public void handle(long now) {
-				moveSkyBackground();
-				//RandomWindows();
+				MoveSkyBackground();
+				RandomWindows();
 			}
 		};
 		gameTimer.start();
@@ -100,11 +100,11 @@ public class GameViewManager {
 	public void RandomWindows() {
 		
 		for (int i = 0; i < listWindows.size(); i++) {
-			if(listWindows.get(i).GetlightON() == false)
+			if(listWindows.get(i).GetlightON() == false) {
 				listWindows.get(i).EnableWindow();
 				listWindows.get(i).SetWindowLightOn();
 				counter++;
-
+			}
 			/*if(counter == 9){
 				Random r = new Random();
 				randomW = listWindows.get(r.nextInt(5));
@@ -117,7 +117,7 @@ public class GameViewManager {
 		counter = 0;
 	}
 	
-	private void setSkyBackground() {
+	private void SetSkyBackground() {
 		pane1 = new Pane();
 		pane2 = new Pane();
 		
@@ -130,15 +130,15 @@ public class GameViewManager {
 		gamePane.getChildren().addAll(pane1, pane2);
 	}
 	
-	private void setCityBackground() {
+	private void SetCityBackground() {
 		city = new Pane();
 		
-		ImageView cityBackgroundImage = new ImageView(CityBackground);
-		city.getChildren().add(cityBackgroundImage);
+		ImageView CityBackgroundImage = new ImageView(CityBackground);
+		city.getChildren().add(CityBackgroundImage);
 		gamePane.getChildren().add(city);
 	}
 	
-	private void moveSkyBackground() {
+	private void MoveSkyBackground() {
 		pane1.setLayoutX(pane1.getLayoutX() + 0.4);
 		pane2.setLayoutX(pane2.getLayoutX() + 0.4);
 		
