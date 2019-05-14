@@ -5,10 +5,13 @@ import java.util.List;
 import java.util.Random;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import model.score.Score;
 import model.window.JanelaTripla;
 
 public class GameViewManager {
@@ -23,6 +26,7 @@ public class GameViewManager {
 	private Pane pane1;
 	private Pane pane2;
 	private Pane city;
+	private Label txtScore;
 	
 	private static final int WIDTH = 1190;
 	private static final int HEIGTH = 690;
@@ -31,13 +35,6 @@ public class GameViewManager {
 	
 	public GameViewManager() {
 		InitializeStage();
-		CreateKeyListeners();
-		
-	}
-
-	private void CreateKeyListeners() {
-		
-
 	}
 
 	private void InitializeStage() {
@@ -56,9 +53,17 @@ public class GameViewManager {
 			SetSkyBackground();
 			SetCityBackground();
 			CreateWindows();
+			txtScore = new Label();
+			gamePane.getChildren().add(txtScore);
 			CreateGameLoop();			
 	}
-	
+	private void SetScorePanel() {
+		txtScore.setText("Score Test : " + Score.GetTotalScore());
+		txtScore.setLayoutX(450);
+		txtScore.setLayoutY(50);
+		txtScore.setFont(new Font(40));
+	}
+
 	private void CreateWindows() {
 		
 		JanelaTripla w1, w2, w3, w4, w5, w6, w7, w8, w9, w10;
@@ -92,6 +97,7 @@ public class GameViewManager {
 			@Override
 			public void handle(long now) {
 				MoveSkyBackground();
+				SetScorePanel();
 				RandomWindows();
 			}
 		};
@@ -115,6 +121,7 @@ public class GameViewManager {
 			}					
 		}
 		counter++;
+		
 	}
 	
 	private void SetSkyBackground() {
