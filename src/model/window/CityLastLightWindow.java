@@ -4,6 +4,7 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import model.score.Score;
 
 public abstract class CityLastLightWindow extends Button {
 	
@@ -43,6 +44,7 @@ public abstract class CityLastLightWindow extends Button {
 			public void handle(MouseEvent event) {				
 				if(event.getButton().equals(MouseButton.PRIMARY)) {
 					SetWindowLightOff();
+					Score.AddNewPoint();
 				}
 			}
 		});
