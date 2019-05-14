@@ -31,13 +31,6 @@ public class GameViewManager {
 	
 	public GameViewManager() {
 		InitializeStage();
-		CreateKeyListeners();
-		
-	}
-
-	private void CreateKeyListeners() {
-		
-
 	}
 
 	private void InitializeStage() {
@@ -104,16 +97,14 @@ public class GameViewManager {
 				//listWindows.get(i).SetWindowLightOn();
 				counter++;
 			}
-			if(counter == 10){
+			if(counter == 8){
 				Random r = new Random();
 				randomW = listWindows.get(r.nextInt(10));
 				randomW.EnableWindow();
 				randomW.SetWindowLightOn();
-				counter = 0;
 			}
-		
 		}
-		//counter = 0;
+		counter = 0;
 	}
 	
 	private void SetSkyBackground() {

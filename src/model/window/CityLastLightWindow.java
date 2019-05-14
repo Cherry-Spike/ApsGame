@@ -42,7 +42,7 @@ public abstract class CityLastLightWindow extends Button {
 			@Override
 			public void handle(MouseEvent event) {				
 				if(event.getButton().equals(MouseButton.PRIMARY)) {
-					SetWindowLightOn();
+					SetWindowLightOff();
 				}
 			}
 		});
