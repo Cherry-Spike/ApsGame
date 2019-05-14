@@ -20,8 +20,8 @@ import model.button.CityLastLightBotaoVoltar;
 
 public class ViewManager {
 	
-	private static final int WIDTH = 1200;
-	private static final int HEIGTH = 700;
+	private static final int WIDTH = 1190;
+	private static final int HEIGTH = 690;
 	private static final int Botao_PosicaoX = 468;
 	private static final int Botao_PosicaoY = 240;
 	private static int PositionCount = 0;	

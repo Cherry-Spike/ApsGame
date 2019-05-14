@@ -11,7 +11,8 @@ public class Main extends Application {
 		try {
 			ViewManager vmanager = new ViewManager();
 			primaryStage = vmanager.getMainStage();
-			primaryStage.setTitle("City Last Light!");			
+			primaryStage.setTitle("City Last Light!");
+			primaryStage.setResizable(false);
 		    
 			primaryStage.show();    
 		} catch(Exception e) {

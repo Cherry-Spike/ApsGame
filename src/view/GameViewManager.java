@@ -24,8 +24,8 @@ public class GameViewManager {
 	private Pane pane2;
 	private Pane city;
 	
-	private static final int WIDTH = 1200;
-	private static final int HEIGTH = 700;
+	private static final int WIDTH = 1190;
+	private static final int HEIGTH = 690;
 	private static final String SkyBackground = "view/resources/SkyBG.png";
 	private static final String CityBackground = "view/resources/GameCity.png";
 	
@@ -45,6 +45,8 @@ public class GameViewManager {
 		gameScene = new Scene(gamePane, WIDTH, HEIGTH);
 		gameStage = new Stage();
 		gameStage.setScene(gameScene);
+		gameStage.setTitle("City Last Light!");
+		gameStage.setResizable(false);
 	}
 	
 	public void CreateNewGame(Stage menuStage) {
@@ -100,20 +102,23 @@ public class GameViewManager {
 		
 		for (int i = 0; i < listWindows.size(); i++) {
 			if(listWindows.get(i).GetlightON() == false) {
+			
 				//listWindows.get(i).EnableWindow();
 				//listWindows.get(i).SetWindowLightOn();
-				counter++;
-			}
-			if(counter == 10){
+				//counter++;			
+				
+				if(counter >= 30){
 				Random r = new Random();
 				randomW = listWindows.get(r.nextInt(10));
-				randomW.EnableWindow();
-				randomW.SetWindowLightOn();
+				if(randomW.GetlightON() == false) {
+					randomW.EnableWindow();
+					randomW.SetWindowLightOn();
+				}				
 				counter = 0;
-			}
-		
+				}
+			}					
 		}
-		//counter = 0;
+		counter++;
 	}
 	
 	private void SetSkyBackground() {

@@ -66,7 +66,7 @@ public abstract class CityLastLightWindow extends Button {
 		setOnMouseExited(new EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent event) {				
-					SetWindowLightOn();					
+					setStyle(WindowLightOn);					
 			}
 		});
 	}
