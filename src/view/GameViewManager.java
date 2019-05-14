@@ -101,11 +101,7 @@ public class GameViewManager {
 	public void RandomWindows() {
 		
 		for (int i = 0; i < listWindows.size(); i++) {
-			if(listWindows.get(i).GetlightON() == false) {
-			
-				//listWindows.get(i).EnableWindow();
-				//listWindows.get(i).SetWindowLightOn();
-				//counter++;			
+			if(listWindows.get(i).GetlightON() == false) {					
 				
 				if(counter >= 30){
 				Random r = new Random();
