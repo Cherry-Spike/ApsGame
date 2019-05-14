@@ -109,7 +109,7 @@ public class GameViewManager {
 		for (int i = 0; i < listWindows.size(); i++) {
 			if(listWindows.get(i).GetlightON() == false) {					
 				
-				if(counter >= 30){
+				if(counter >= 40){
 				Random r = new Random();
 				randomW = listWindows.get(r.nextInt(10));
 				if(randomW.GetlightON() == false) {
