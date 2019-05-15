@@ -11,6 +11,7 @@ public class WindowList {
 	JanelaAp w11, w12, w13, w14, w15, w16, w17, w18, w19, w20;
 	JanelaAntiga w21, w22, w23;
 	JanelaAntigaPerspectiva w24, w25, w26;
+	JanelaMuseu w27, w28, w29, w30, w31, w32;
 	
 	public WindowList() {
 		
@@ -48,6 +49,12 @@ public class WindowList {
 		w24 = new JanelaAntigaPerspectiva(57,351);	
 		w25 = new JanelaAntigaPerspectiva(57,415);	
 		w26 = new JanelaAntigaPerspectiva(57,478);	
+		w27 = new JanelaMuseu(521,282);	
+		w28 = new JanelaMuseu(521,377);	
+		w29 = new JanelaMuseu(521,472);	
+		w30 = new JanelaMuseu(611,282);	
+		w31 = new JanelaMuseu(610,377);	
+		w32 = new JanelaMuseu(610,472);	
 		
 		Windowlist.add(w1);
 		Windowlist.add(w2);
@@ -75,6 +82,12 @@ public class WindowList {
 		Windowlist.add(w24);
 		Windowlist.add(w25);
 		Windowlist.add(w26);
+		Windowlist.add(w27);
+		Windowlist.add(w28);
+		Windowlist.add(w29);
+		Windowlist.add(w30);
+		Windowlist.add(w31);
+		Windowlist.add(w32);
 		
 	}
 	
