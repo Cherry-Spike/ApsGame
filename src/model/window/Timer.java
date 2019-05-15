@@ -14,11 +14,11 @@ public class Timer {
 	public Timer(List<CityLastLightWindow> list) {
 		
 		this.list = list;
-		TurnOnRamdomWindow();
+		TurnOnRandomWindow();
 		
 	}
 	
-	public void TurnOnRamdomWindow() {
+	public void TurnOnRandomWindow() {
 		
 		validador = new int[list.size()];
 		rand = new Random();

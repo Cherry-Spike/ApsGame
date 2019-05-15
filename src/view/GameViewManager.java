@@ -87,7 +87,7 @@ public class GameViewManager {
 	public void WindowTimer() {
 	
 		Timer temp = new Timer(WindowList);
-		temp.TurnOnRamdomWindow();
+		temp.TurnOnRandomWindow();
 		
 	}	
 	
