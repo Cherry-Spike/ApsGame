@@ -27,11 +27,14 @@ public class GameViewManager {
 	private Pane pane2;
 	private Pane city;
 	private Label txtScore;
-	
+	private Random rand;
 	private static final int WIDTH = 1190;
 	private static final int HEIGTH = 690;
 	private static final String SkyBackground = "view/resources/SkyBG.png";
 	private static final String CityBackground = "view/resources/GameCity.png";
+	
+	public int[] validador ;
+	public int[] pDisponivel;
 	
 	public GameViewManager() {
 		InitializeStage();
@@ -66,9 +69,24 @@ public class GameViewManager {
 
 	private void CreateWindows() {
 		
+		//JanelaTripla[] j = new JanelaTripla[9];
 		JanelaTripla w1, w2, w3, w4, w5, w6, w7, w8, w9, w10;
 		
 		listWindows = new ArrayList<JanelaTripla>();
+		/*int c = 1;
+		for(int i=0; i < 9; i++) {			
+			do {
+				c = 1;
+			}while(i == 5);
+			
+			if(i < 5) {
+				j[i] = new JanelaTripla(106, 233 + 64*c);
+			}else {
+				j[i] = new JanelaTripla(187, 233 + 64*c);				
+			}
+			c++;		
+			listWindows.add(j[i]);
+		}*/
 		w1 = new JanelaTripla(106,297);
 		w2 = new JanelaTripla(106,361);
 		w3 = new JanelaTripla(106,425);
@@ -102,27 +120,51 @@ public class GameViewManager {
 			}
 		};
 		gameTimer.start();
-	}		
-
+	}
+			
 	public void RandomWindows() {
+	
+		validador = new int[listWindows.size()];
+		rand = new Random();
 		
 		for (int i = 0; i < listWindows.size(); i++) {
 			if(listWindows.get(i).GetlightON() == false) {					
-				
-				if(counter >= 40){
-				Random r = new Random();
-				randomW = listWindows.get(r.nextInt(10));
-				if(randomW.GetlightON() == false) {
-					randomW.EnableWindow();
-					randomW.SetWindowLightOn();
-				}				
-				counter = 0;
-				}
-			}					
+				validador[i] = i; 												
+			}else {
+				validador[i] = -1;
+			}
 		}
-		counter++;
 		
-	}
+		//temporizador	
+		if(counter > 150){	
+			int posicao=0, r=0, cont=0, cpos=0;
+			
+			//logica para pegar a posicao das janelas apagadas aleatoriamente			
+			for (int j = 0; j < listWindows.size(); j++) {
+				if(validador[j] != -1) {							
+					cont++;
+				}						
+			}
+			
+			if(cont > 0) {				
+				pDisponivel = new int[cont];
+				
+				for (int j = 0; j < listWindows.size(); j++) {
+				if(validador[j] != -1) {							
+					pDisponivel[cpos] = validador[j];
+					cpos++;
+					}
+				}			
+				posicao = rand.nextInt(pDisponivel.length);
+				r = pDisponivel[posicao];
+				randomW = listWindows.get(r);
+				randomW.EnableWindow();
+				randomW.SetWindowLightOn();
+				counter = 0;		
+			}									
+		}	
+		counter++;	
+	}	
 	
 	private void SetSkyBackground() {
 		pane1 = new Pane();

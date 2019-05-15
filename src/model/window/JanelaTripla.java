@@ -9,5 +9,4 @@ public class JanelaTripla extends CityLastLightWindow {
 		WindowLightOff = "-fx-background-color: transparent;";
 		setStyle(WindowLightOn);
 	}
-
 }
