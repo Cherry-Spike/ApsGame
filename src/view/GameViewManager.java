@@ -2,7 +2,6 @@ package view;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -13,9 +12,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import model.score.Score;
 import model.window.CityLastLightWindow;
-import model.window.JanelaAp;
-import model.window.JanelaTripla;
-import model.window.Temporizador;
+import model.window.Timer;
 import model.window.WindowList;
 
 public class GameViewManager {
@@ -81,15 +78,15 @@ public class GameViewManager {
 			public void handle(long now) {
 				MoveSkyBackground();
 				SetScorePanel();
-				WindowTemporizer();
+				WindowTimer();
 			}
 		};
 		gameTimer.start();
 	}
 			
-	public void WindowTemporizer() {
+	public void WindowTimer() {
 	
-		Temporizador temp = new Temporizador(WindowList);
+		Timer temp = new Timer(WindowList);
 		temp.TurnOnRamdomWindow();
 		
 	}	

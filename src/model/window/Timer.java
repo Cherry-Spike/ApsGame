@@ -3,7 +3,7 @@ package model.window;
 import java.util.List;
 import java.util.Random;
 
-public class Temporizador {
+public class Timer {
 	
 	private List<CityLastLightWindow> list;
 	private Random rand;
@@ -11,7 +11,7 @@ public class Temporizador {
 	private int[] pDisponivel;
 	private static int counter = 0;
 	
-	public Temporizador(List<CityLastLightWindow> list) {
+	public Timer(List<CityLastLightWindow> list) {
 		
 		this.list = list;
 		TurnOnRamdomWindow();
