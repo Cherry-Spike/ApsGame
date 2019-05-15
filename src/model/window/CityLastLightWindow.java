@@ -11,7 +11,7 @@ public abstract class CityLastLightWindow extends Button {
 	protected String WindowLightOn;
 	protected String WindowLightActive;
 	protected String WindowLightOff;
-	protected boolean lightON = true;
+	protected boolean lightON = false;
 	protected int Width, Height;
 	
 	public CityLastLightWindow(int width, int height,  int posX, int posY) {
@@ -19,6 +19,8 @@ public abstract class CityLastLightWindow extends Button {
 		setPrefHeight(height);
 		setLayoutX(posX);
 		setLayoutY(posY);
+		setStyle(WindowLightOff);
+		DisableWindow();
 		InitializerListeners();
 	}
 	

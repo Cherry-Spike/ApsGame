@@ -7,6 +7,5 @@ public class JanelaTripla extends CityLastLightWindow {
 		WindowLightOn = "-fx-background-color: transparent; -fx-cursor: hand; -fx-background-image: url('Model/resources/window/JanelaTriplaON.png');";
 		WindowLightActive = "-fx-background-color: transparent; -fx-cursor: hand; -fx-background-image: url('Model/resources/window/JanelaTriplaEntered.png');";
 		WindowLightOff = "-fx-background-color: transparent;";
-		setStyle(WindowLightOn);
 	}
 }
