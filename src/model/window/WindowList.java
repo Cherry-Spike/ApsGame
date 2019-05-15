@@ -9,6 +9,8 @@ public class WindowList {
 	private List<CityLastLightWindow> Windowlist;	
 	JanelaTripla w1, w2, w3, w4, w5, w6, w7, w8, w9, w10;
 	JanelaAp w11, w12, w13, w14, w15, w16, w17, w18, w19, w20;
+	JanelaAntiga w21, w22, w23;
+	JanelaAntigaPerspectiva w24, w25, w26;
 	
 	public WindowList() {
 		
@@ -40,6 +42,12 @@ public class WindowList {
 		w18 = new JanelaAp(424,331);
 		w19 = new JanelaAp(424,413);
 		w20 = new JanelaAp(424,492);	
+		w21 = new JanelaAntiga(8,357);	
+		w22 = new JanelaAntiga(8,420);	
+		w23 = new JanelaAntiga(8,484);	
+		w24 = new JanelaAntigaPerspectiva(57,351);	
+		w25 = new JanelaAntigaPerspectiva(57,415);	
+		w26 = new JanelaAntigaPerspectiva(57,478);	
 		
 		Windowlist.add(w1);
 		Windowlist.add(w2);
@@ -61,6 +69,13 @@ public class WindowList {
 		Windowlist.add(w18);
 		Windowlist.add(w19);
 		Windowlist.add(w20);
+		Windowlist.add(w21);
+		Windowlist.add(w22);
+		Windowlist.add(w23);
+		Windowlist.add(w24);
+		Windowlist.add(w25);
+		Windowlist.add(w26);
+		
 	}
 	
 	public List<CityLastLightWindow> GetWindowList() {
