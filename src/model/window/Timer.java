@@ -32,7 +32,7 @@ public class Timer {
 		}
 		
 		//temporizador & janelas randomicas
-		if(counter > 200){	
+		if(counter > 150){	
 			int posicao=0, r=0, cont=0, cpos=0;
 			
 			for (int j = 0; j < list.size(); j++) {

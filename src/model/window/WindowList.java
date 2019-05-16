@@ -12,6 +12,9 @@ public class WindowList {
 	JanelaAntiga w21, w22, w23;
 	JanelaAntigaPerspectiva w24, w25, w26;
 	JanelaMuseu w27, w28, w29, w30, w31, w32;
+	JanelaVidroModerna w33, w34, w35;
+	JanelaCafe w36;
+	VitrineCafe w37;
 	
 	public WindowList() {
 		
@@ -47,14 +50,19 @@ public class WindowList {
 		w22 = new JanelaAntiga(8,420);	
 		w23 = new JanelaAntiga(8,484);	
 		w24 = new JanelaAntigaPerspectiva(57,351);	
-		w25 = new JanelaAntigaPerspectiva(57,415);	
-		w26 = new JanelaAntigaPerspectiva(57,478);	
+		w25 = new JanelaAntigaPerspectiva(58,415);	
+		w26 = new JanelaAntigaPerspectiva(58,478);	
 		w27 = new JanelaMuseu(521,282);	
 		w28 = new JanelaMuseu(521,377);	
 		w29 = new JanelaMuseu(521,472);	
 		w30 = new JanelaMuseu(611,282);	
 		w31 = new JanelaMuseu(610,377);	
-		w32 = new JanelaMuseu(610,472);	
+		w32 = new JanelaMuseu(610,472);
+		w33 = new JanelaVidroModerna(698,281);
+		w34 = new JanelaVidroModerna(698,429);
+		w35 = new JanelaVidroModerna(808,355);
+		w36 = new JanelaCafe(740,496);
+		w37 = new VitrineCafe(730,608);
 		
 		Windowlist.add(w1);
 		Windowlist.add(w2);
@@ -88,6 +96,11 @@ public class WindowList {
 		Windowlist.add(w30);
 		Windowlist.add(w31);
 		Windowlist.add(w32);
+		Windowlist.add(w33);
+		Windowlist.add(w34);
+		Windowlist.add(w35);
+		Windowlist.add(w36);
+		Windowlist.add(w37);
 		
 	}
 	
