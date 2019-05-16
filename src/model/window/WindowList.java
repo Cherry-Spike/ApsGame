@@ -15,6 +15,8 @@ public class WindowList {
 	JanelaVidroModerna w33, w34, w35;
 	JanelaCafe w36;
 	VitrineCafe w37;
+	JanelaLoja w38, w39, w40, w41;
+	JanelaDupla w42, w43;
 	
 	public WindowList() {
 		
@@ -63,6 +65,12 @@ public class WindowList {
 		w35 = new JanelaVidroModerna(808,355);
 		w36 = new JanelaCafe(740,496);
 		w37 = new VitrineCafe(730,608);
+		w38 = new JanelaLoja(867,412);
+		w39 = new JanelaLoja(867,466);
+		w40 = new JanelaLoja(958,412);
+		w41 = new JanelaLoja(958,466);
+		w42 = new JanelaDupla(1110,335);
+		w43 = new JanelaDupla(1111,424);
 		
 		Windowlist.add(w1);
 		Windowlist.add(w2);
@@ -101,6 +109,12 @@ public class WindowList {
 		Windowlist.add(w35);
 		Windowlist.add(w36);
 		Windowlist.add(w37);
+		Windowlist.add(w38);
+		Windowlist.add(w39);
+		Windowlist.add(w40);
+		Windowlist.add(w41);
+		Windowlist.add(w42);
+		Windowlist.add(w43);
 		
 	}
 	
