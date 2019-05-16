@@ -17,6 +17,7 @@ public class WindowList {
 	VitrineCafe w37;
 	JanelaLoja w38, w39, w40, w41;
 	JanelaDupla w42, w43;
+	JanelaDupla2 w44, w45;
 	
 	public WindowList() {
 		
@@ -71,6 +72,8 @@ public class WindowList {
 		w41 = new JanelaLoja(958,466);
 		w42 = new JanelaDupla(1110,335);
 		w43 = new JanelaDupla(1111,424);
+		w44 = new JanelaDupla2(104,611);
+		w45 = new JanelaDupla2(195,611);
 		
 		Windowlist.add(w1);
 		Windowlist.add(w2);
@@ -115,6 +118,8 @@ public class WindowList {
 		Windowlist.add(w41);
 		Windowlist.add(w42);
 		Windowlist.add(w43);
+		Windowlist.add(w44);
+		Windowlist.add(w45);
 		
 	}
 	
