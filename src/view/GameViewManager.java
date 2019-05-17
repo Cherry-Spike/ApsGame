@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import model.score.Score;
@@ -24,8 +25,13 @@ public class GameViewManager {
 	private List<CityLastLightWindow> WindowList;
 	private Pane pane1;
 	private Pane pane2;
-	private Pane city;
-	private Label txtScore;
+	private Pane cityBG;
+	private Label txtScore;	
+	private final int nightSpeed = 50;
+	private final int daySpeed = 140;
+	private int timerSpeed = daySpeed;	
+	private Label timeInfo;
+	private String timeOfDay = "Dia";	
 	private static final int WIDTH = 1190;
 	private static final int HEIGTH = 690;
 	private static final String SkyBackground = "view/resources/SkyBG.png";
@@ -37,30 +43,48 @@ public class GameViewManager {
 	}
 
 	private void InitializeStage() {
+		
 		gamePane = new AnchorPane();
 		gameScene = new Scene(gamePane, WIDTH, HEIGTH);
 		gameStage = new Stage();
 		gameStage.setScene(gameScene);
 		gameStage.setTitle("City Last Light!");
 		gameStage.setResizable(false);
+		
 	}
 	
 	public void CreateNewGame(Stage menuStage) {
-			this.menuStage = menuStage;
-			this.menuStage.hide();
-			gameStage.show();
-			SetSkyBackground();
-			SetCityBackground();
-			CreateWindows();
-			txtScore = new Label();
-			gamePane.getChildren().add(txtScore);
-			CreateGameLoop();			
+		
+		this.menuStage = menuStage;
+		this.menuStage.hide();
+		gameStage.show();
+		SetSkyBackground();
+		SetCityBackground();
+		CreateWindows();
+		txtScore = new Label();
+		gamePane.getChildren().add(txtScore);
+		timeInfo = new Label();
+		gamePane.getChildren().add(timeInfo);
+		CreateGameLoop();				
+		
+	}	
+	
+	private void SetTimeLabel() {
+		
+		timeInfo.setText("Horario: " + timeOfDay);
+		timeInfo.setLayoutX(150);
+		timeInfo.setLayoutY(30);
+		timeInfo.setFont(new Font(40));
+		timeInfo.setTextFill(Color.GREENYELLOW);		
 	}
+	
 	private void SetScorePanel() {
-		txtScore.setText("Score Test : " + Score.GetTotalScore());
+		
+		txtScore.setText("Luzes Apagadas: " + Score.GetTotalScore());
 		txtScore.setLayoutX(450);
-		txtScore.setLayoutY(50);
+		txtScore.setLayoutY(30);
 		txtScore.setFont(new Font(40));
+		txtScore.setTextFill(Color.YELLOW);		
 	}
 
 	private void CreateWindows() {
@@ -79,6 +103,8 @@ public class GameViewManager {
 				MoveSkyBackground();
 				SetScorePanel();
 				WindowTimer();
+				TimeCycle();
+				SetTimeLabel();
 			}
 		};
 		gameTimer.start();
@@ -86,7 +112,7 @@ public class GameViewManager {
 			
 	public void WindowTimer() {
 	
-		Timer temp = new Timer(WindowList);
+		Timer temp = new Timer(WindowList, timerSpeed);
 		temp.TurnOnRandomWindow();
 		
 	}	
@@ -105,23 +131,36 @@ public class GameViewManager {
 	}
 	
 	private void SetCityBackground() {
-		city = new Pane();
+		cityBG = new Pane();
 		
 		ImageView CityBackgroundImage = new ImageView(CityBackground);
-		city.getChildren().add(CityBackgroundImage);
-		gamePane.getChildren().add(city);
+		cityBG.getChildren().add(CityBackgroundImage);
+		gamePane.getChildren().add(cityBG);
 	}
 	
 	private void MoveSkyBackground() {
-		pane1.setLayoutX(pane1.getLayoutX() + 0.4);
-		pane2.setLayoutX(pane2.getLayoutX() + 0.4);
-		
+		pane1.setLayoutX(pane1.getLayoutX() + 0.5);
+		pane2.setLayoutX(pane2.getLayoutX() + 0.5);
+				
 		if(pane1.getLayoutX() >= 7800) {
 			pane1.setLayoutX(-7800);
 		}
 		
 		if(pane2.getLayoutX() >= 7800) {
 			pane2.setLayoutX(-7800);
+		}
+	}
+	
+	private void TimeCycle() {
+		
+		if(pane1.getLayoutX() >= -1000 && pane1.getLayoutX() <= -990 || pane2.getLayoutX() >= -1000 && pane2.getLayoutX() <= -990) {
+			timeOfDay = "Noite";
+			timerSpeed = nightSpeed;
+		}
+		
+		if(pane1.getLayoutX() >= 1350 && pane1.getLayoutX() <= 1360 || pane2.getLayoutX() >= 1350 && pane2.getLayoutX() <= 1360) {
+			timeOfDay = "Dia";
+			timerSpeed = daySpeed;
 		}
 	}
 	

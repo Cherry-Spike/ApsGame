@@ -7,12 +7,14 @@ public class Timer {
 	
 	private List<CityLastLightWindow> list;
 	private Random rand;
+	private int timerSpeed;
 	private int[] validador ;
 	private int[] pDisponivel;
 	private static int counter = 0;
 	
-	public Timer(List<CityLastLightWindow> list) {
+	public Timer(List<CityLastLightWindow> list, int timerSpeed) {
 		
+		this.timerSpeed = timerSpeed;
 		this.list = list;
 		TurnOnRandomWindow();
 		
@@ -32,7 +34,7 @@ public class Timer {
 		}
 		
 		//temporizador & janelas randomicas
-		if(counter > 150){	
+		if(counter > timerSpeed){	
 			int posicao=0, r=0, cont=0, cpos=0;
 			
 			for (int j = 0; j < list.size(); j++) {
