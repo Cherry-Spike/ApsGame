@@ -11,13 +11,15 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import model.score.EnergyScore;
 import model.score.Score;
 import model.window.CityLastLightWindow;
 import model.window.Timer;
 import model.window.WindowList;
 
 public class GameViewManager {
-
+	
+	private EnergyScore enegyscore = new EnergyScore();
 	private Scene gameScene;
 	private Stage gameStage;
 	private AnchorPane gamePane;
@@ -31,6 +33,7 @@ public class GameViewManager {
 	private final int daySpeed = 140;
 	private int timerSpeed = daySpeed;	
 	private Label timeInfo;
+	private Label energyScore;
 	private String timeOfDay = "Dia";	
 	private static final int WIDTH = 1190;
 	private static final int HEIGTH = 690;
@@ -43,7 +46,6 @@ public class GameViewManager {
 	}
 
 	private void InitializeStage() {
-		
 		gamePane = new AnchorPane();
 		gameScene = new Scene(gamePane, WIDTH, HEIGTH);
 		gameStage = new Stage();
@@ -65,6 +67,8 @@ public class GameViewManager {
 		gamePane.getChildren().add(txtScore);
 		timeInfo = new Label();
 		gamePane.getChildren().add(timeInfo);
+		energyScore = new Label();
+		gamePane.getChildren().add(energyScore);
 		CreateGameLoop();				
 		
 	}	
@@ -86,6 +90,15 @@ public class GameViewManager {
 		txtScore.setFont(new Font(40));
 		txtScore.setTextFill(Color.YELLOW);		
 	}
+	
+	private void SetEnergyScoreLabel() {
+		
+		energyScore.setText("Pontos de Energia: " + EnergyScore.GetEnegyPoints());
+		energyScore.setLayoutX(750);
+		energyScore.setLayoutY(30);
+		energyScore.setFont(new Font(40));
+		energyScore.setTextFill(Color.YELLOW);	
+	}
 
 	private void CreateWindows() {
 	
@@ -105,6 +118,8 @@ public class GameViewManager {
 				WindowTimer();
 				TimeCycle();
 				SetTimeLabel();
+				SetEnergyScoreLabel();
+				SetScoreBars();
 			}
 		};
 		gameTimer.start();
@@ -164,4 +179,8 @@ public class GameViewManager {
 		}
 	}
 	
+	private void SetScoreBars() {
+		enegyscore.setWindow(WindowList);
+		enegyscore.ScoreTimer();
+	}
 }
