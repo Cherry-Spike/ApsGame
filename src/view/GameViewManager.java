@@ -1,5 +1,7 @@
 package view;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.animation.AnimationTimer;
@@ -85,7 +87,7 @@ public class GameViewManager {
 	private void SetScorePanel() {
 		
 		txtScore.setText("Luzes Apagadas: " + Score.GetTotalScore());
-		txtScore.setLayoutX(450);
+		txtScore.setLayoutX(400);
 		txtScore.setLayoutY(30);
 		txtScore.setFont(new Font(40));
 		txtScore.setTextFill(Color.YELLOW);		
@@ -93,11 +95,14 @@ public class GameViewManager {
 	
 	private void SetEnergyScoreLabel() {
 		
-		energyScore.setText("Pontos de Energia: " + EnergyScore.GetEnegyPoints());
+		DecimalFormat decimalFormat = new DecimalFormat("###");
+		decimalFormat.setRoundingMode(RoundingMode.DOWN);
+		String x = decimalFormat.format(EnergyScore.GetEnegyPoints());
+		energyScore.setText("Pontos de Energia: " + x);
 		energyScore.setLayoutX(750);
 		energyScore.setLayoutY(30);
 		energyScore.setFont(new Font(40));
-		energyScore.setTextFill(Color.YELLOW);	
+		energyScore.setTextFill(Color.RED);	
 	}
 
 	private void CreateWindows() {
