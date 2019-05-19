@@ -31,6 +31,7 @@ public class GameViewManager {
 	private Pane pane2;
 	private Pane cityBG;
 	private Pane menuBG;
+	private Pane bottonMenuBG;
 	private Label txtScore;	
 	private final int nightSpeed = 60;
 	private final int daySpeed = 130;
@@ -39,10 +40,11 @@ public class GameViewManager {
 	private Label energyScore;
 	private String timeOfDay = "Dia";	
 	private static final int WIDTH = 1290;
-	private static final int HEIGTH = 690;
+	private static final int HEIGTH = 800;
 	private static final String SkyBackground = "view/resources/SkyBG.png";
 	private static final String CityBackground = "view/resources/GameCity.png";
-	private static final String MenuBackground = "view/resources/fundomenu.png";
+	private static final String SideMenuBackground = "view/resources/fundomenu.png";
+	private static final String BottonMenuBackground = "view/resources/FundoMenuDeBaixo.png";
 	private static final String ScoreBar = "model/resources/scorebar/barras.png";
 	
 	public GameViewManager() {
@@ -66,7 +68,8 @@ public class GameViewManager {
 		gameStage.show();
 		SetSkyBackground();
 		SetCityBackground();
-		SetMenuBackground();
+		SetSideMenuBackground();
+		SetBottonMenuBackground();
 		CreateWindows();
 		txtScore = new Label();
 		gamePane.getChildren().add(txtScore);
@@ -82,18 +85,18 @@ public class GameViewManager {
 		
 		timeInfo.setText("Horario: " + timeOfDay);
 		timeInfo.setLayoutX(150);
-		timeInfo.setLayoutY(30);
+		timeInfo.setLayoutY(730);
 		timeInfo.setFont(new Font(35));
-		timeInfo.setTextFill(Color.GREENYELLOW);		
+		timeInfo.setTextFill(Color.WHITE);		
 	}
 	
 	private void SetScoreLanel() {
 		
 		txtScore.setText("Luzes Apagadas: " + ClickScore.GetTotalScore());
 		txtScore.setLayoutX(400);
-		txtScore.setLayoutY(30);
+		txtScore.setLayoutY(730);
 		txtScore.setFont(new Font(35));
-		txtScore.setTextFill(Color.YELLOW);		
+		txtScore.setTextFill(Color.WHITE);		
 	}
 	
 	private void SetEnergyScoreLabel() {
@@ -103,9 +106,9 @@ public class GameViewManager {
 		String x = decimalFormat.format(EnergyScore.GetEnegyPoints());
 		energyScore.setText("Pontos de Energia: " + x);
 		energyScore.setLayoutX(760);
-		energyScore.setLayoutY(30);
+		energyScore.setLayoutY(730);
 		energyScore.setFont(new Font(35));
-		energyScore.setTextFill(Color.RED);	
+		energyScore.setTextFill(Color.YELLOW);	
 	}
 
 	private void CreateWindows() {
@@ -160,16 +163,27 @@ public class GameViewManager {
 		cityBG.getChildren().add(CityBackgroundImage);
 		gamePane.getChildren().add(cityBG);
 	}
-	private void SetMenuBackground() {
+	
+	private void SetSideMenuBackground() {
+		bottonMenuBG = new Pane();
+		
+		ImageView menuBackgroundImage = new ImageView(BottonMenuBackground);
+		bottonMenuBG.getChildren().add(menuBackgroundImage);
+		bottonMenuBG.setLayoutY(700);
+		gamePane.getChildren().add(bottonMenuBG);
+		
+	}
+	
+	private void SetBottonMenuBackground() {
 		menuBG = new Pane();
 		
-		ImageView menuBackgroundImage = new ImageView(MenuBackground);
+		ImageView menuBackgroundImage = new ImageView(SideMenuBackground);
 		menuBG.getChildren().add(menuBackgroundImage);
 		menuBG.setLayoutX(1200);
 		gamePane.getChildren().add(menuBG);
 		SetMenuBars();
-		
 	}
+	
 	private void SetMenuBars() {
 		ImageView scorebars = new ImageView(ScoreBar);
 		scorebars.setLayoutX(9);
