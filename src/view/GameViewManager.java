@@ -48,7 +48,7 @@ public class GameViewManager {
 	private static final String CityBackground = "view/resources/GameCity.png";
 	private static final String SideMenuBackground = "view/resources/fundomenu.png";
 	private static final String BottonMenuBackground = "view/resources/FundoMenuDeBaixo.png";
-	private static final String ScoreBar = "model/resources/scorebar/barras.png";
+	private static final String ScoreURL = "model/resources/scorebar/barras.png";
 	
 	public GameViewManager() {
 		InitializeStage();
@@ -88,7 +88,7 @@ public class GameViewManager {
 		
 		timeInfo.setText("Horario: " + timeOfDay);
 		timeInfo.setLayoutX(150);
-		timeInfo.setLayoutY(730);
+		timeInfo.setLayoutY(40);
 		timeInfo.setFont(Font.font("Arial", FontWeight.BOLD, FontPosture.ITALIC, 30));
 		timeInfo.setTextFill(Color.WHITE);		
 	}
@@ -97,7 +97,7 @@ public class GameViewManager {
 		
 		txtScore.setText("Luzes Apagadas: " + ClickScore.GetTotalScore());
 		txtScore.setLayoutX(400);
-		txtScore.setLayoutY(730);
+		txtScore.setLayoutY(40);
 		txtScore.setFont(Font.font("Arial", FontWeight.BOLD, FontPosture.ITALIC, 30));
 		txtScore.setTextFill(Color.WHITE);		
 	}
@@ -109,7 +109,7 @@ public class GameViewManager {
 		String x = decimalFormat.format(ScoreBars.GetEnegyPoints());
 		energyScore.setText("Pontos de Energia: " + x);
 		energyScore.setLayoutX(760);
-		energyScore.setLayoutY(730);
+		energyScore.setLayoutY(40);
 		energyScore.setFont(Font.font("Arial", FontWeight.BOLD, FontPosture.ITALIC, 30));
 		energyScore.setTextFill(Color.YELLOW);	
 	}
@@ -188,7 +188,7 @@ public class GameViewManager {
 	}
 	
 	private void SetMenuBars() {
-		ImageView scorebars = new ImageView(ScoreBar);
+		ImageView scorebars = new ImageView(ScoreURL);
 		scorebars.setLayoutX(21);
 		scorebars.setLayoutY(179.5);
 		menuBG.getChildren().add(scorebars);
