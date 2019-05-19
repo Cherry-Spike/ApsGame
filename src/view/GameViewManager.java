@@ -14,7 +14,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import model.score.EnergyScore;
-import model.score.Score;
+import model.score.ClickScore;
 import model.window.CityLastLightWindow;
 import model.window.Timer;
 import model.window.WindowList;
@@ -32,8 +32,8 @@ public class GameViewManager {
 	private Pane cityBG;
 	private Pane menuBG;
 	private Label txtScore;	
-	private final int nightSpeed = 50;
-	private final int daySpeed = 140;
+	private final int nightSpeed = 60;
+	private final int daySpeed = 130;
 	private int timerSpeed = daySpeed;	
 	private Label timeInfo;
 	private Label energyScore;
@@ -83,16 +83,16 @@ public class GameViewManager {
 		timeInfo.setText("Horario: " + timeOfDay);
 		timeInfo.setLayoutX(150);
 		timeInfo.setLayoutY(30);
-		timeInfo.setFont(new Font(40));
+		timeInfo.setFont(new Font(35));
 		timeInfo.setTextFill(Color.GREENYELLOW);		
 	}
 	
-	private void SetScorePanel() {
+	private void SetScoreLanel() {
 		
-		txtScore.setText("Luzes Apagadas: " + Score.GetTotalScore());
+		txtScore.setText("Luzes Apagadas: " + ClickScore.GetTotalScore());
 		txtScore.setLayoutX(400);
 		txtScore.setLayoutY(30);
-		txtScore.setFont(new Font(40));
+		txtScore.setFont(new Font(35));
 		txtScore.setTextFill(Color.YELLOW);		
 	}
 	
@@ -102,9 +102,9 @@ public class GameViewManager {
 		decimalFormat.setRoundingMode(RoundingMode.DOWN);
 		String x = decimalFormat.format(EnergyScore.GetEnegyPoints());
 		energyScore.setText("Pontos de Energia: " + x);
-		energyScore.setLayoutX(750);
+		energyScore.setLayoutX(760);
 		energyScore.setLayoutY(30);
-		energyScore.setFont(new Font(40));
+		energyScore.setFont(new Font(35));
 		energyScore.setTextFill(Color.RED);	
 	}
 
@@ -122,7 +122,7 @@ public class GameViewManager {
 			@Override
 			public void handle(long now) {
 				MoveSkyBackground();
-				SetScorePanel();
+				SetScoreLanel();
 				WindowTimer();
 				TimeCycle();
 				SetTimeLabel();
@@ -175,7 +175,12 @@ public class GameViewManager {
 		scorebars.setLayoutX(9);
 		scorebars.setLayoutY(179.5);
 		menuBG.getChildren().add(scorebars);
-		EnergyScore.EnergyLevel(menuBG);
+		EnergyScore.SetEnergyLevelArray(menuBG);
+	}	
+	
+	private void SetScoreBars() {
+		enegyscore.setWindow(WindowList);
+		enegyscore.ScoreTimer(menuBG);
 	}
 	
 	private void MoveSkyBackground() {
@@ -202,10 +207,5 @@ public class GameViewManager {
 			timeOfDay = "Dia";
 			timerSpeed = daySpeed;
 		}
-	}
-	
-	private void SetScoreBars() {
-		enegyscore.setWindow(WindowList);
-		enegyscore.ScoreTimer(menuBG);
 	}
 }

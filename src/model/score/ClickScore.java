@@ -1,7 +1,7 @@
 package model.score;
 
 
-public class Score {
+public class ClickScore {
 	private static int TotalScore;
 	
 	public static void AddNewPoint(){
