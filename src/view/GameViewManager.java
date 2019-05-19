@@ -12,6 +12,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import model.score.EnergyScore;
 import model.score.ClickScore;
@@ -40,7 +42,7 @@ public class GameViewManager {
 	private Label energyScore;
 	private String timeOfDay = "Dia";	
 	private static final int WIDTH = 1290;
-	private static final int HEIGTH = 800;
+	private static final int HEIGTH = 790;
 	private static final String SkyBackground = "view/resources/SkyBG.png";
 	private static final String CityBackground = "view/resources/GameCity.png";
 	private static final String SideMenuBackground = "view/resources/fundomenu.png";
@@ -79,14 +81,14 @@ public class GameViewManager {
 		gamePane.getChildren().add(energyScore);
 		CreateGameLoop();				
 		
-	}	
+	}
 	
 	private void SetTimeLabel() {
 		
 		timeInfo.setText("Horario: " + timeOfDay);
 		timeInfo.setLayoutX(150);
 		timeInfo.setLayoutY(730);
-		timeInfo.setFont(new Font(35));
+		timeInfo.setFont(Font.font("Arial", FontWeight.BOLD, FontPosture.ITALIC, 30));
 		timeInfo.setTextFill(Color.WHITE);		
 	}
 	
@@ -95,7 +97,7 @@ public class GameViewManager {
 		txtScore.setText("Luzes Apagadas: " + ClickScore.GetTotalScore());
 		txtScore.setLayoutX(400);
 		txtScore.setLayoutY(730);
-		txtScore.setFont(new Font(35));
+		txtScore.setFont(Font.font("Arial", FontWeight.BOLD, FontPosture.ITALIC, 30));
 		txtScore.setTextFill(Color.WHITE);		
 	}
 	
@@ -107,7 +109,7 @@ public class GameViewManager {
 		energyScore.setText("Pontos de Energia: " + x);
 		energyScore.setLayoutX(760);
 		energyScore.setLayoutY(730);
-		energyScore.setFont(new Font(35));
+		energyScore.setFont(Font.font("Arial", FontWeight.BOLD, FontPosture.ITALIC, 30));
 		energyScore.setTextFill(Color.YELLOW);	
 	}
 
