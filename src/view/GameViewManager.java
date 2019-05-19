@@ -38,6 +38,7 @@ public class GameViewManager {
 	private final int nightSpeed = 60;
 	private final int daySpeed = 130;
 	private int timerSpeed = daySpeed;	
+	public static boolean night = false;	
 	private Label timeInfo;
 	private Label energyScore;
 	private String timeOfDay = "Dia";	
@@ -200,8 +201,8 @@ public class GameViewManager {
 	}
 	
 	private void MoveSkyBackground() {
-		pane1.setLayoutX(pane1.getLayoutX() + 0.5);
-		pane2.setLayoutX(pane2.getLayoutX() + 0.5);
+		pane1.setLayoutX(pane1.getLayoutX() + 3);
+		pane2.setLayoutX(pane2.getLayoutX() + 3);
 				
 		if(pane1.getLayoutX() >= 7800) {
 			pane1.setLayoutX(-7800);
@@ -216,11 +217,13 @@ public class GameViewManager {
 		
 		if(pane1.getLayoutX() >= -1000 && pane1.getLayoutX() <= -990 || pane2.getLayoutX() >= -1000 && pane2.getLayoutX() <= -990) {
 			timeOfDay = "Noite";
+			night = true;
 			timerSpeed = nightSpeed;
 		}
 		
 		if(pane1.getLayoutX() >= 1350 && pane1.getLayoutX() <= 1360 || pane2.getLayoutX() >= 1350 && pane2.getLayoutX() <= 1360) {
 			timeOfDay = "Dia";
+			night = false;
 			timerSpeed = daySpeed;
 		}
 	}
