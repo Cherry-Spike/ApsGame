@@ -30,6 +30,7 @@ public class GameViewManager {
 	private Pane pane1;
 	private Pane pane2;
 	private Pane cityBG;
+	private Pane menuBG;
 	private Label txtScore;	
 	private final int nightSpeed = 50;
 	private final int daySpeed = 140;
@@ -37,11 +38,12 @@ public class GameViewManager {
 	private Label timeInfo;
 	private Label energyScore;
 	private String timeOfDay = "Dia";	
-	private static final int WIDTH = 1190;
+	private static final int WIDTH = 1290;
 	private static final int HEIGTH = 690;
 	private static final String SkyBackground = "view/resources/SkyBG.png";
 	private static final String CityBackground = "view/resources/GameCity.png";
-	
+	private static final String MenuBackground = "view/resources/fundomenu.png";
+	private static final String ScoreBar = "model/resources/scorebar/barras.png";
 	
 	public GameViewManager() {
 		InitializeStage();
@@ -64,6 +66,7 @@ public class GameViewManager {
 		gameStage.show();
 		SetSkyBackground();
 		SetCityBackground();
+		SetMenuBackground();
 		CreateWindows();
 		txtScore = new Label();
 		gamePane.getChildren().add(txtScore);
@@ -157,6 +160,23 @@ public class GameViewManager {
 		cityBG.getChildren().add(CityBackgroundImage);
 		gamePane.getChildren().add(cityBG);
 	}
+	private void SetMenuBackground() {
+		menuBG = new Pane();
+		
+		ImageView menuBackgroundImage = new ImageView(MenuBackground);
+		menuBG.getChildren().add(menuBackgroundImage);
+		menuBG.setLayoutX(1200);
+		gamePane.getChildren().add(menuBG);
+		SetMenuBars();
+		
+	}
+	private void SetMenuBars() {
+		ImageView scorebars = new ImageView(ScoreBar);
+		scorebars.setLayoutX(9);
+		scorebars.setLayoutY(179.5);
+		menuBG.getChildren().add(scorebars);
+		EnergyScore.EnergyLevel(menuBG);
+	}
 	
 	private void MoveSkyBackground() {
 		pane1.setLayoutX(pane1.getLayoutX() + 0.5);
@@ -186,6 +206,6 @@ public class GameViewManager {
 	
 	private void SetScoreBars() {
 		enegyscore.setWindow(WindowList);
-		enegyscore.ScoreTimer();
+		enegyscore.ScoreTimer(menuBG);
 	}
 }
