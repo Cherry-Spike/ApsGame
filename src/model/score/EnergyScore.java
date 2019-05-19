@@ -10,15 +10,12 @@ public  class EnergyScore {
 	private static double energypoints = 100; 
 	private List <CityLastLightWindow> listwindow ;
 	private int cont = 0;
-	private double Acumulator = 0.16;
+	private double Acumulator = 0.2;
 	private int scoreTimer = 5;
 	private int scoreCont = 0; 
 	private static final String EnergyURL = "model/resources/scorebar/energia.png";
 	private static ImageView[] points = new ImageView[100];
 	private static double energyPositionY = 514.5;
-	private static int decrementValue;
-	private static Pane menuBG;
-	
 	
 	public  EnergyScore(){
 		//AccumulateEnergyPoints();
@@ -38,20 +35,20 @@ public  class EnergyScore {
 		if(cont > 4) {					
 			energypoints -= Acumulator;// consumo de energia por janela 
 			if(cont >= 8) {
-				Acumulator += 0.005;
+				Acumulator += 0.003;
 			}else if(cont >= 14) {
-				Acumulator += 0.005;
+				Acumulator += 0.003;
 			}
 			else if(cont >= 18) {
-				Acumulator += 0.005;
+				Acumulator += 0.003;
 			}
 			else if(cont >= 22) {
-				Acumulator += 0.005;
+				Acumulator += 0.003;
 			}
 			else if(cont >= 26) {
-				Acumulator += 0.005;
+				Acumulator += 0.003;
 			}else {
-				Acumulator = 0.16;
+				Acumulator = 0.1;
 			}
 		}else {
 			energypoints -= 0;
@@ -63,7 +60,7 @@ public  class EnergyScore {
 	public  void AccumulateEnergyPoints(){
 		
 		if(energypoints <= 100 && energypoints >= 0) {
-		energypoints += 0.15;
+		energypoints += 0.1;
 		}
 		if(energypoints > 100){
 		energypoints = 100;
@@ -80,7 +77,9 @@ public  class EnergyScore {
 		if(scoreCont > scoreTimer) {
 			ConsumeEnergyPoints(listwindow);
 			AccumulateEnergyPoints();
-			menuBG.getChildren().remove(points[(int)energypoints]);
+			if(energypoints < 100) {
+				menuBG.getChildren().remove(points[(int)energypoints]);
+			}
 			scoreCont = 0;
 		}
 		scoreCont++;
