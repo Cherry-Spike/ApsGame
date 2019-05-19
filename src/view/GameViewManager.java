@@ -87,18 +87,18 @@ public class GameViewManager {
 	private void SetTimeLabel() {
 		
 		timeInfo.setText("Horario: " + timeOfDay);
-		timeInfo.setLayoutX(150);
-		timeInfo.setLayoutY(40);
+		timeInfo.setLayoutX(580);
+		timeInfo.setLayoutY(730);
 		timeInfo.setFont(Font.font("Arial", FontWeight.BOLD, FontPosture.ITALIC, 30));
 		timeInfo.setTextFill(Color.WHITE);		
 	}
 	
-	private void SetScoreLanel() {
+	private void SetScoreLabel() {
 		
 		txtScore.setText("Luzes Apagadas: " + ClickScore.GetTotalScore());
-		txtScore.setLayoutX(400);
-		txtScore.setLayoutY(40);
-		txtScore.setFont(Font.font("Arial", FontWeight.BOLD, FontPosture.ITALIC, 30));
+		txtScore.setLayoutX(990);
+		txtScore.setLayoutY(734);
+		txtScore.setFont(Font.font("Arial", FontWeight.BOLD, FontPosture.ITALIC, 25));
 		txtScore.setTextFill(Color.WHITE);		
 	}
 	
@@ -128,7 +128,7 @@ public class GameViewManager {
 			@Override
 			public void handle(long now) {
 				MoveSkyBackground();
-				SetScoreLanel();
+				SetScoreLabel();
 				WindowTimer();
 				TimeCycle();
 				SetTimeLabel();
