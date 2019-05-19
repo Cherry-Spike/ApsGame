@@ -20,10 +20,10 @@ import model.button.CityLastLightBotaoVoltar;
 
 public class ViewManager {
 	
-	private static final int WIDTH = 1190;
-	private static final int HEIGTH = 690;
-	private static final int Botao_PosicaoX = 468;
-	private static final int Botao_PosicaoY = 240;
+	private static final int WIDTH = 1314;
+	private static final int HEIGTH = 790;
+	private static final double Botao_PosicaoX = 521.5;
+	private static final int Botao_PosicaoY = 260;
 	private static int PositionCount = 0;	
 	private AnchorPane mainPane;
 	private Scene mainScene;
@@ -109,14 +109,14 @@ public class ViewManager {
 		final ImageView selectedImage = new ImageView();
 		Image Titulo = new Image("/view/resources/TelaInicial3.png", 1200,71,false,true);
 		selectedImage.setImage(Titulo);
-		selectedImage.setLayoutX(25);
-		selectedImage.setLayoutY(120);
+		selectedImage.setLayoutX(70);
+		selectedImage.setLayoutY(135);
 		mainPane.getChildren().add(selectedImage);		
 	}
 	
 	//Background & Scenes
 	private void setBackground() {		
-		Image backgroundImage = new Image("/view/resources/CityBG.png", 1200,700,false,true); //Background Provisorio!!!;
+		Image backgroundImage = new Image("/view/resources/CityBG.png", 1314,800,false,true); //Background Provisorio!!!;
 		BackgroundImage background = new BackgroundImage(backgroundImage, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, null);
 		mainPane.setBackground(new Background(background));		
 	}

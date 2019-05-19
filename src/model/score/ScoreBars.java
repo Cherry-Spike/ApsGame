@@ -7,9 +7,9 @@ import javafx.scene.layout.Pane;
 import model.window.CityLastLightWindow;
 import view.GameViewManager;
 
-public  class EnergyScore {
+public  class ScoreBars {
 	private static double energypoints = 100; 
-	private static double happinesspoints = 100; 
+	private static double happinesspoints = 99; 
 	private List <CityLastLightWindow> listwindow ;
 	private int cont = 0;
 	private static double Acumulator = 0.2;
@@ -40,18 +40,18 @@ public  class EnergyScore {
 			energypoints -= Acumulator;// consumo de energia por x janela
 			increanse = false;
 			if(cont >= 8) {
-				Acumulator += 0.003;
+				Acumulator += 0.002;
 			}else if(cont >= 14) {
-				Acumulator += 0.003;
+				Acumulator += 0.002;
 			}
 			else if(cont >= 18) {
-				Acumulator += 0.004;
+				Acumulator += 0.002;
 			}
 			else if(cont >= 22) {
-				Acumulator += 0.005;
+				Acumulator += 0.003;
 			}
 			else if(cont >= 25) {
-				Acumulator += 0.01;
+				Acumulator += 0.004;
 			}else {
 				Acumulator = 0.2;
 			}
@@ -78,8 +78,12 @@ public  class EnergyScore {
 	
 	public void AccumulateHappinessPoints(){
 		
-		if(happinesspoints <= 100 && happinesspoints >= 0) {
-			happinesspoints += 0.1;
+		if(GameViewManager.night == false && happinesspoints <= 99 && happinesspoints >= 0) {
+			happinesspoints += 0.03;
+			Hpoints[(int)happinesspoints].setVisible(true);
+			for(int i=0; i < happinesspoints; i++) {
+				Hpoints[i].setVisible(true);			
+			}			
 		}
 		if(happinesspoints > 100){
 			happinesspoints = 100;
@@ -87,6 +91,7 @@ public  class EnergyScore {
 		if(happinesspoints < 0) {
 			happinesspoints = 0;
 		}
+	
 	}
 	
 	public static void AddNewEnergyPoint(){
@@ -98,11 +103,12 @@ public  class EnergyScore {
 	
 	public static void RemoveHappinessPoint(){
 		
-		if(Hpoints[(int)happinesspoints].isVisible() == true) {
+		if(happinesspoints < 100) {
+			if(Hpoints[(int)happinesspoints].isVisible() == true) {
 			Hpoints[(int)happinesspoints].setVisible(false);
 			happinesspoints -= 1;
-		}
-		
+			}
+		}	
 	}
 	
 	public void EnergyLevel() {
@@ -120,17 +126,6 @@ public  class EnergyScore {
 		}		
 	}
 	
-	public void HappinessLevel() {
-		for(int i=0; i < happinesspoints; i++) {
-			if(happinesspoints < 100 && GameViewManager.night == false) {			
-				Hpoints[(int)happinesspoints].setVisible(true);
-			}	
-		}
-		for(int i=0; i < happinesspoints; i++) {
-				Hpoints[i].setVisible(true);				
-			}			
-	}
-	
 	public void ScoreTimer(Pane menuBG){
 	
 		if(scoreCont > scoreTimer) {
@@ -138,7 +133,6 @@ public  class EnergyScore {
 			AccumulateEnergyPoints();
 			AccumulateHappinessPoints();
 			EnergyLevel();
-			HappinessLevel();
 			scoreCont = 0;
 		}
 		scoreCont++;
@@ -152,7 +146,7 @@ public  class EnergyScore {
 		
 		for(int i = 0 ; i < 100; i++) {
 			Epoints[i] = new ImageView(EnergyURL);
-			Epoints[i].setLayoutX(66);
+			Epoints[i].setLayoutX(78);
 			Epoints[i].setLayoutY(LevelPositionY);
 			menuBG.getChildren().add(Epoints[i]);
 			LevelPositionY -= 3;
@@ -162,7 +156,7 @@ public  class EnergyScore {
 		
 		for(int i = 0 ; i < 100; i++) {
 			Hpoints[i] = new ImageView(HappinessURL);
-			Hpoints[i].setLayoutX(20);
+			Hpoints[i].setLayoutX(32);
 			Hpoints[i].setLayoutY(LevelPositionY);
 			menuBG.getChildren().add(Hpoints[i]);
 			LevelPositionY -= 3;

@@ -15,7 +15,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
-import model.score.EnergyScore;
+import model.score.ScoreBars;
 import model.score.ClickScore;
 import model.window.CityLastLightWindow;
 import model.window.Timer;
@@ -23,7 +23,7 @@ import model.window.WindowList;
 
 public class GameViewManager {
 	
-	private EnergyScore enegyscore = new EnergyScore();
+	private ScoreBars enegyscore = new ScoreBars();
 	private Scene gameScene;
 	private Stage gameStage;
 	private AnchorPane gamePane;
@@ -35,14 +35,14 @@ public class GameViewManager {
 	private Pane menuBG;
 	private Pane bottonMenuBG;
 	private Label txtScore;	
-	private final int nightSpeed = 60;
+	private final int nightSpeed = 70;
 	private final int daySpeed = 130;
 	private int timerSpeed = daySpeed;	
 	public static boolean night = false;	
 	private Label timeInfo;
 	private Label energyScore;
 	private String timeOfDay = "Dia";	
-	private static final int WIDTH = 1290;
+	private static final int WIDTH = 1314;
 	private static final int HEIGTH = 790;
 	private static final String SkyBackground = "view/resources/SkyBG.png";
 	private static final String CityBackground = "view/resources/GameCity.png";
@@ -106,7 +106,7 @@ public class GameViewManager {
 		
 		DecimalFormat decimalFormat = new DecimalFormat("###");
 		decimalFormat.setRoundingMode(RoundingMode.DOWN);
-		String x = decimalFormat.format(EnergyScore.GetEnegyPoints());
+		String x = decimalFormat.format(ScoreBars.GetEnegyPoints());
 		energyScore.setText("Pontos de Energia: " + x);
 		energyScore.setLayoutX(760);
 		energyScore.setLayoutY(730);
@@ -189,10 +189,10 @@ public class GameViewManager {
 	
 	private void SetMenuBars() {
 		ImageView scorebars = new ImageView(ScoreBar);
-		scorebars.setLayoutX(9);
+		scorebars.setLayoutX(21);
 		scorebars.setLayoutY(179.5);
 		menuBG.getChildren().add(scorebars);
-		EnergyScore.SetEnergyLevelArray(menuBG);
+		ScoreBars.SetEnergyLevelArray(menuBG);
 	}	
 	
 	private void SetScoreBars() {
@@ -201,8 +201,8 @@ public class GameViewManager {
 	}
 	
 	private void MoveSkyBackground() {
-		pane1.setLayoutX(pane1.getLayoutX() + 3);
-		pane2.setLayoutX(pane2.getLayoutX() + 3);
+		pane1.setLayoutX(pane1.getLayoutX() + 0.5);
+		pane2.setLayoutX(pane2.getLayoutX() + 0.5);
 				
 		if(pane1.getLayoutX() >= 7800) {
 			pane1.setLayoutX(-7800);
@@ -224,7 +224,7 @@ public class GameViewManager {
 		if(pane1.getLayoutX() >= 1350 && pane1.getLayoutX() <= 1360 || pane2.getLayoutX() >= 1350 && pane2.getLayoutX() <= 1360) {
 			timeOfDay = "Dia";
 			night = false;
-			timerSpeed = daySpeed;
+			timerSpeed = daySpeed;			
 		}
 	}
 }

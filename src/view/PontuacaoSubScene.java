@@ -27,8 +27,8 @@ public class PontuacaoSubScene extends SubScene {
 		Pane root2 = (Pane) this.getRoot();
 		root2.setBackground(new Background(Image));
 		
-		setLayoutX(250);
-		setLayoutY(700);
+		setLayoutX(290);
+		setLayoutY(800);
 	}
 	
 	public void moveSubScene() {

@@ -4,7 +4,7 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
-import model.score.EnergyScore;
+import model.score.ScoreBars;
 import view.GameViewManager;
 import model.score.ClickScore;
 
@@ -49,9 +49,9 @@ public abstract class CityLastLightWindow extends Button {
 				if(event.getButton().equals(MouseButton.PRIMARY)) {
 					SetWindowLightOff();
 					ClickScore.AddNewPoint();
-					EnergyScore.AddNewEnergyPoint();
+					ScoreBars.AddNewEnergyPoint();
 					if(GameViewManager.night == true) {
-						EnergyScore.RemoveHappinessPoint();
+						ScoreBars.RemoveHappinessPoint();
 					}
 				}
 			}
