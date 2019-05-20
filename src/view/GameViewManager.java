@@ -89,7 +89,6 @@ public class GameViewManager {
 		gamePane.getChildren().add(timeInfo);
 		energyScore = new Label();
 		gamePane.getChildren().add(energyScore);
-		setGameOverSubScene();
 		CreateGameLoop();				
 	}
 	
@@ -162,7 +161,7 @@ public class GameViewManager {
 			
 	private void GameStatus() {
 		if(ScoreBars.GetEnegyPoints() == 0) {
-			gameOverSubScene.moveSubScene();
+			setGameOverSubScene();
 		}
 		
 	}
