@@ -5,6 +5,8 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.animation.AnimationTimer;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -16,6 +18,7 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import model.score.ScoreBars;
+import model.button.CityLastLightBotaoVoltar;
 import model.score.ClickScore;
 import model.window.CityLastLightWindow;
 import model.window.Timer;
@@ -28,6 +31,7 @@ public class GameViewManager {
 	private Stage gameStage;
 	private AnchorPane gamePane;
 	private Stage menuStage;
+	private GameOverSubScene gameOverSubScene;
 	private List<CityLastLightWindow> WindowList;
 	private Pane pane1;
 	private Pane pane2;
@@ -80,8 +84,8 @@ public class GameViewManager {
 		gamePane.getChildren().add(timeInfo);
 		energyScore = new Label();
 		gamePane.getChildren().add(energyScore);
+		setGameOverSubScene();
 		CreateGameLoop();				
-		
 	}
 	
 	private void SetTimeLabel() {
@@ -103,7 +107,6 @@ public class GameViewManager {
 	}
 	
 	private void SetEnergyScoreLabel() {
-		
 		DecimalFormat decimalFormat = new DecimalFormat("###");
 		decimalFormat.setRoundingMode(RoundingMode.DOWN);
 		String x = decimalFormat.format(ScoreBars.GetEnegyPoints());
@@ -134,11 +137,19 @@ public class GameViewManager {
 				SetTimeLabel();
 				SetEnergyScoreLabel();
 				SetScoreBars();
+				GameStatus();
 			}
+
 		};
 		gameTimer.start();
 	}
 			
+	private void GameStatus() {
+		if(ScoreBars.GetEnegyPoints() == 0) {
+			gameOverSubScene.moveSubScene();
+		}
+		
+	}
 	public void WindowTimer() {
 	
 		Timer temp = new Timer(WindowList, timerSpeed);
@@ -226,5 +237,23 @@ public class GameViewManager {
 			night = false;
 			timerSpeed = daySpeed;			
 		}
+	}
+	
+	private void setGameOverSubScene() {
+		gameOverSubScene = new GameOverSubScene();	
+		gamePane.getChildren().add(gameOverSubScene);
+		createMenuButton();
+	}
+
+	private void createMenuButton() {
+		CityLastLightBotaoVoltar Voltar = new CityLastLightBotaoVoltar("");
+		Voltar.setLayoutX(90);
+		Voltar.setLayoutY(420);
+		gameOverSubScene.getPane().getChildren().add(Voltar);
+		
+		Voltar.setOnAction(new EventHandler<ActionEvent>() {			
+			@Override
+			public void handle(ActionEvent event) {}
+		});	
 	}
 }
