@@ -39,9 +39,12 @@ public class GameViewManager {
 	private final int daySpeed = 130;
 	private int timerSpeed = daySpeed;	
 	public static boolean night = false;	
+	public static boolean validaDia = true;	
 	private Label timeInfo;
 	private Label energyScore;
-	private String timeOfDay = "Dia";	
+	private Label datainfo;
+	private String timeOfDay = "Dia";
+	private int countDay = 0;
 	private static final int WIDTH = 1314;
 	private static final int HEIGTH = 790;
 	private static final String SkyBackground = "view/resources/SkyBG.png";
@@ -74,6 +77,8 @@ public class GameViewManager {
 		SetSideMenuBackground();
 		SetBottonMenuBackground();
 		CreateWindows();
+		datainfo = new Label();
+		gamePane.getChildren().add(datainfo);
 		txtScore = new Label();
 		gamePane.getChildren().add(txtScore);
 		timeInfo = new Label();
@@ -100,6 +105,15 @@ public class GameViewManager {
 		txtScore.setLayoutY(734);
 		txtScore.setFont(Font.font("Arial", FontWeight.BOLD, FontPosture.ITALIC, 25));
 		txtScore.setTextFill(Color.WHITE);		
+	}
+	
+	private void SetDateLabel() {
+		
+		datainfo.setText("Dia: " + countDay);
+		datainfo.setLayoutX(130);
+		datainfo.setLayoutY(731);
+		datainfo.setFont(Font.font("Arial", FontWeight.BOLD, FontPosture.ITALIC, 30));
+		datainfo.setTextFill(Color.WHITE);		
 	}
 	
 	private void SetEnergyScoreLabel() {
@@ -134,6 +148,8 @@ public class GameViewManager {
 				SetTimeLabel();
 				SetEnergyScoreLabel();
 				SetScoreBars();
+				SetDateLabel();
+				DayCount();
 			}
 		};
 		gameTimer.start();
@@ -227,4 +243,16 @@ public class GameViewManager {
 			timerSpeed = daySpeed;			
 		}
 	}
+	
+	private void DayCount() {
+		
+		if(night == false && validaDia == true) {
+			countDay++;
+			validaDia = false;
+		}
+		if(night == true && validaDia == false) {
+			validaDia = true;
+		}
+	}
+	
 }
