@@ -40,18 +40,18 @@ public  class ScoreBars {
 			energypoints -= Acumulator;// consumo de energia por x janela
 			increanse = false;
 			if(cont >= 8) {
-				Acumulator += 0.002;
+				Acumulator += 0.001;
 			}else if(cont >= 14) {
-				Acumulator += 0.002;
+				Acumulator += 0.001;
 			}
 			else if(cont >= 18) {
-				Acumulator += 0.002;
+				Acumulator += 0.001;
 			}
 			else if(cont >= 22) {
-				Acumulator += 0.003;
+				Acumulator += 0.002;
 			}
-			else if(cont >= 25) {
-				Acumulator += 0.004;
+			else if(cont >= 24) {
+				Acumulator += 0.003;
 			}else {
 				Acumulator = 0.2;
 			}
@@ -66,7 +66,7 @@ public  class ScoreBars {
 	public void AccumulateEnergyPoints(){
 		
 		if(energypoints <= 100 && energypoints >= 0) {
-		energypoints += 0.1;
+		energypoints += 0.125;
 		}
 		if(energypoints > 100){
 		energypoints = 100;
@@ -78,8 +78,8 @@ public  class ScoreBars {
 	
 	public void AccumulateHappinessPoints(){
 		
-		if(GameViewManager.night == false && happinesspoints <= 99 && happinesspoints >= 0) {
-			happinesspoints += 0.03;
+		if(happinesspoints <= 99 && happinesspoints >= 0) {
+			happinesspoints += 0.036;
 			Hpoints[(int)happinesspoints].setVisible(true);
 			for(int i=0; i < happinesspoints; i++) {
 				Hpoints[i].setVisible(true);			

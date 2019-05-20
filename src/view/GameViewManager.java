@@ -43,9 +43,12 @@ public class GameViewManager {
 	private final int daySpeed = 130;
 	private int timerSpeed = daySpeed;	
 	public static boolean night = false;	
+	public static boolean validaDia = true;	
 	private Label timeInfo;
 	private Label energyScore;
-	private String timeOfDay = "Dia";	
+	private Label datainfo;
+	private String timeOfDay = "Dia";
+	private int countDay = 0;
 	private static final int WIDTH = 1314;
 	private static final int HEIGTH = 790;
 	private static final String SkyBackground = "view/resources/SkyBG.png";
@@ -78,6 +81,8 @@ public class GameViewManager {
 		SetSideMenuBackground();
 		SetBottonMenuBackground();
 		CreateWindows();
+		datainfo = new Label();
+		gamePane.getChildren().add(datainfo);
 		txtScore = new Label();
 		gamePane.getChildren().add(txtScore);
 		timeInfo = new Label();
@@ -91,19 +96,28 @@ public class GameViewManager {
 	private void SetTimeLabel() {
 		
 		timeInfo.setText("Horario: " + timeOfDay);
-		timeInfo.setLayoutX(150);
-		timeInfo.setLayoutY(40);
+		timeInfo.setLayoutX(580);
+		timeInfo.setLayoutY(730);
 		timeInfo.setFont(Font.font("Arial", FontWeight.BOLD, FontPosture.ITALIC, 30));
 		timeInfo.setTextFill(Color.WHITE);		
 	}
 	
-	private void SetScoreLanel() {
+	private void SetScoreLabel() {
 		
 		txtScore.setText("Luzes Apagadas: " + ClickScore.GetTotalScore());
-		txtScore.setLayoutX(400);
-		txtScore.setLayoutY(40);
-		txtScore.setFont(Font.font("Arial", FontWeight.BOLD, FontPosture.ITALIC, 30));
+		txtScore.setLayoutX(990);
+		txtScore.setLayoutY(734);
+		txtScore.setFont(Font.font("Arial", FontWeight.BOLD, FontPosture.ITALIC, 25));
 		txtScore.setTextFill(Color.WHITE);		
+	}
+	
+	private void SetDateLabel() {
+		
+		datainfo.setText("Dia: " + countDay);
+		datainfo.setLayoutX(130);
+		datainfo.setLayoutY(731);
+		datainfo.setFont(Font.font("Arial", FontWeight.BOLD, FontPosture.ITALIC, 30));
+		datainfo.setTextFill(Color.WHITE);		
 	}
 	
 	private void SetEnergyScoreLabel() {
@@ -131,13 +145,15 @@ public class GameViewManager {
 			@Override
 			public void handle(long now) {
 				MoveSkyBackground();
-				SetScoreLanel();
+				SetScoreLabel();
 				WindowTimer();
 				TimeCycle();
 				SetTimeLabel();
 				SetEnergyScoreLabel();
 				SetScoreBars();
 				GameStatus();
+				SetDateLabel();
+				DayCount();
 			}
 
 		};
@@ -256,4 +272,15 @@ public class GameViewManager {
 			public void handle(ActionEvent event) {}
 		});	
 	}
+	private void DayCount() {
+		
+		if(night == false && validaDia == true) {
+			countDay++;
+			validaDia = false;
+		}
+		if(night == true && validaDia == false) {
+			validaDia = true;
+		}
+	}
+	
 }
