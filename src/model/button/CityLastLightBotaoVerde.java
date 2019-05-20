@@ -6,7 +6,6 @@ public class CityLastLightBotaoVerde extends CityLastLightBotao {
 		
 		public CityLastLightBotaoVerde(String text) {		
 			super(text);	
-			//SetFont = "-fx-text-fill: white; -fx-font: bold italic 20pt \"Arial\"; ;";
 			SetButtonColor();
 			BotaoPressionado = "-fx-background-color: transparent; -fx-cursor: hand; -fx-background-image: url('Model/resources/button/BotaoVerdePressionado.png');";
 			BotaoSolto = "-fx-background-color: transparent; -fx-cursor: hand; -fx-background-image: url('Model/resources/button/BotaoVerdeSolto.png');";

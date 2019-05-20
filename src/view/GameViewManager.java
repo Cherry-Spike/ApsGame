@@ -18,7 +18,7 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import model.score.ScoreBars;
-import model.button.CityLastLightBotaoVoltar;
+import model.button.CityLastLightBotaoVermelho;
 import model.score.ClickScore;
 import model.window.CityLastLightWindow;
 import model.window.Timer;
@@ -43,7 +43,8 @@ public class GameViewManager {
 	private final int daySpeed = 130;
 	private int timerSpeed = daySpeed;	
 	public static boolean night = false;	
-	public static boolean validaDia = true;	
+	public static boolean validateDay = true;
+	public static boolean gameOverStopCall = false;
 	private Label timeInfo;
 	private Label energyScore;
 	private Label datainfo;
@@ -101,7 +102,7 @@ public class GameViewManager {
 		timeInfo.setTextFill(Color.WHITE);		
 	}
 	
-	private void SetScoreLabel() {
+	private void SetClickScoreLabel() {
 		
 		txtScore.setText("Luzes Apagadas: " + ClickScore.GetTotalScore());
 		txtScore.setLayoutX(990);
@@ -144,7 +145,7 @@ public class GameViewManager {
 			@Override
 			public void handle(long now) {
 				MoveSkyBackground();
-				SetScoreLabel();
+				SetClickScoreLabel();
 				WindowTimer();
 				TimeCycle();
 				SetTimeLabel();
@@ -154,17 +155,17 @@ public class GameViewManager {
 				SetDateLabel();
 				DayCount();
 			}
-
 		};
 		gameTimer.start();
 	}
 			
 	private void GameStatus() {
-		if(ScoreBars.GetEnegyPoints() == 0) {
+		if(ScoreBars.GetEnegyPoints() == 0 && gameOverStopCall == false) {
 			setGameOverSubScene();
-		}
-		
+			gameOverStopCall = true;
+		}	
 	}
+	
 	public void WindowTimer() {
 	
 		Timer temp = new Timer(WindowList, timerSpeed);
@@ -254,6 +255,17 @@ public class GameViewManager {
 		}
 	}
 	
+	private void DayCount() {
+		
+		if(night == false && validateDay == true) {
+			countDay++;
+			validateDay = false;
+		}
+		if(night == true && validateDay == false) {
+			validateDay = true;
+		}
+	}
+	
 	private void setGameOverSubScene() {
 		gameOverSubScene = new GameOverSubScene();	
 		gamePane.getChildren().add(gameOverSubScene);
@@ -261,25 +273,17 @@ public class GameViewManager {
 	}
 
 	private void createMenuButton() {
-		CityLastLightBotaoVoltar Voltar = new CityLastLightBotaoVoltar("");
-		Voltar.setLayoutX(90);
-		Voltar.setLayoutY(420);
-		gameOverSubScene.getPane().getChildren().add(Voltar);
+		CityLastLightBotaoVermelho MenuPrincipal = new CityLastLightBotaoVermelho("Menu Principal");
+		MenuPrincipal.setLayoutX(521.5);
+		MenuPrincipal.setLayoutY(400);
+		gameOverSubScene.getPane().getChildren().add(MenuPrincipal);
 		
-		Voltar.setOnAction(new EventHandler<ActionEvent>() {			
+		MenuPrincipal.setOnAction(new EventHandler<ActionEvent>() {			
 			@Override
-			public void handle(ActionEvent event) {}
+			public void handle(ActionEvent event) {
+				menuStage.show();
+				gameStage.hide();
+			}
 		});	
-	}
-	private void DayCount() {
-		
-		if(night == false && validaDia == true) {
-			countDay++;
-			validaDia = false;
-		}
-		if(night == true && validaDia == false) {
-			validaDia = true;
-		}
-	}
-	
+	}	
 }

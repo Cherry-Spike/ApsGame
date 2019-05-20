@@ -7,7 +7,7 @@ import javafx.scene.layout.Pane;
 import model.window.CityLastLightWindow;
 import view.GameViewManager;
 
-public  class ScoreBars {
+public class ScoreBars {
 	private static double energypoints = 100; 
 	private static double happinesspoints = 99; 
 	private List <CityLastLightWindow> listwindow ;
@@ -160,7 +160,9 @@ public  class ScoreBars {
 			Hpoints[i].setLayoutY(LevelPositionY);
 			menuBG.getChildren().add(Hpoints[i]);
 			LevelPositionY -= 3;
-		}		
+		}
+		
+		LevelPositionY = 514.5;
 	}	
 	
 }
