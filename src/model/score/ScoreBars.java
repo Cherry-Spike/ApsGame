@@ -140,7 +140,12 @@ public class ScoreBars {
 	
 	public static double GetEnegyPoints() {
 		return energypoints;
-	}	
+	}
+	
+	public static void ResetPoints() {
+		energypoints = 100;
+		happinesspoints = 99;
+	}
 	
 	public static void SetEnergyLevelArray(Pane menuBG) {
 		

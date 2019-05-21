@@ -11,4 +11,8 @@ public class ClickScore {
 	public static int GetTotalScore() {
 		return TotalScore;
 	}
+	
+	public static int ResetScore() {
+		return TotalScore = 0;
+	}
 }

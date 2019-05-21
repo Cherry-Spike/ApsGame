@@ -1,24 +1,21 @@
 package view;
 
-import java.math.RoundingMode;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.animation.AnimationTimer;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontPosture;
-import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import model.score.ScoreBars;
 import model.button.CityLastLightBotaoVermelho;
+import model.label.TimeLabel;
+import model.label.EnergyLabel;
+import model.label.IntLabel;
+import model.label.StringLabel;
 import model.score.ClickScore;
 import model.window.CityLastLightWindow;
 import model.window.Timer;
@@ -32,31 +29,32 @@ public class GameViewManager {
 	private AnchorPane gamePane;
 	private Stage menuStage;
 	private GameOverSubScene gameOverSubScene;
+	private AnimationTimer gameTimer;
 	private List<CityLastLightWindow> WindowList;
 	private Pane pane1;
 	private Pane pane2;
 	private Pane cityBG;
 	private Pane menuBG;
 	private Pane bottonMenuBG;
-	private Label txtScore;	
 	private final int nightSpeed = 70;
 	private final int daySpeed = 130;
 	private int timerSpeed = daySpeed;	
 	public static boolean night = false;	
-	public static boolean validateDay = true;
-	public static boolean gameOverStopCall = false;
-	private Label timeInfo;
-	private Label energyScore;
-	private Label datainfo;
-	private String timeOfDay = "Dia";
+	public boolean validateDay = true;
+	public boolean gameOverStopCall = false;
+	private TimeLabel dayCountInfo;
+	private EnergyLabel energyScore;
+	private IntLabel clickScoreInfo;	
+	private StringLabel timeInfo;
+	private String daytimeInfo = "Dia";
 	private int countDay = 0;
 	private static final int WIDTH = 1314;
 	private static final int HEIGTH = 790;
-	private static final String SkyBackground = "view/resources/SkyBG.png";
-	private static final String CityBackground = "view/resources/GameCity.png";
-	private static final String SideMenuBackground = "view/resources/fundomenu.png";
-	private static final String BottonMenuBackground = "view/resources/FundoMenuDeBaixo.png";
-	private static final String ScoreURL = "model/resources/scorebar/barras.png";
+	private final String SkyBackground = "view/resources/SkyBG.png";
+	private final String CityBackground = "view/resources/GameCity.png";
+	private final String SideMenuBackground = "view/resources/fundomenu.png";
+	private final String BottonMenuBackground = "view/resources/FundoMenuDeBaixo.png";
+	private final String ScoreURL = "model/resources/scorebar/barras.png";
 	
 	public GameViewManager() {
 		InitializeStage();
@@ -82,57 +80,33 @@ public class GameViewManager {
 		SetSideMenuBackground();
 		SetBottonMenuBackground();
 		CreateWindows();
-		datainfo = new Label();
-		gamePane.getChildren().add(datainfo);
-		txtScore = new Label();
-		gamePane.getChildren().add(txtScore);
-		timeInfo = new Label();
-		gamePane.getChildren().add(timeInfo);
-		energyScore = new Label();
-		gamePane.getChildren().add(energyScore);
+		InitializeLabels();
 		CreateGameLoop();				
 	}
 	
-	private void SetTimeLabel() {
+	private void InitializeLabels() {	
 		
-		timeInfo.setText("Horario: " + timeOfDay);
-		timeInfo.setLayoutX(580);
-		timeInfo.setLayoutY(730);
-		timeInfo.setFont(Font.font("Arial", FontWeight.BOLD, FontPosture.ITALIC, 30));
-		timeInfo.setTextFill(Color.WHITE);		
+		timeInfo = new StringLabel("Horario: ", daytimeInfo, 580, 730, 30);
+		gamePane.getChildren().add(timeInfo);
+		
+		clickScoreInfo = new IntLabel("Luzes Apagadas: ", ClickScore.GetTotalScore(), 990, 734, 25);
+		gamePane.getChildren().add(clickScoreInfo);
+		
+		dayCountInfo = new TimeLabel("Dia: ", countDay, 130, 731, 30);
+		gamePane.getChildren().add(dayCountInfo);	
+		
+		energyScore = new EnergyLabel("Pontos de Energia: ", 760, 40, 30);
+		gamePane.getChildren().add(energyScore);		
 	}
 	
-	private void SetClickScoreLabel() {
-		
-		txtScore.setText("Luzes Apagadas: " + ClickScore.GetTotalScore());
-		txtScore.setLayoutX(990);
-		txtScore.setLayoutY(734);
-		txtScore.setFont(Font.font("Arial", FontWeight.BOLD, FontPosture.ITALIC, 25));
-		txtScore.setTextFill(Color.WHITE);		
-	}
-	
-	private void SetDateLabel() {
-		
-		datainfo.setText("Dia: " + countDay);
-		datainfo.setLayoutX(130);
-		datainfo.setLayoutY(731);
-		datainfo.setFont(Font.font("Arial", FontWeight.BOLD, FontPosture.ITALIC, 30));
-		datainfo.setTextFill(Color.WHITE);		
-	}
-	
-	private void SetEnergyScoreLabel() {
-		DecimalFormat decimalFormat = new DecimalFormat("###");
-		decimalFormat.setRoundingMode(RoundingMode.DOWN);
-		String x = decimalFormat.format(ScoreBars.GetEnegyPoints());
-		energyScore.setText("Pontos de Energia: " + x);
-		energyScore.setLayoutX(760);
-		energyScore.setLayoutY(40);
-		energyScore.setFont(Font.font("Arial", FontWeight.BOLD, FontPosture.ITALIC, 30));
-		energyScore.setTextFill(Color.YELLOW);	
+	private void UpdateGameLabels() {	
+		timeInfo.UpdateLabel(daytimeInfo);
+		clickScoreInfo.UpdateLabel();
+		dayCountInfo.UpdateLabel(countDay);
+		energyScore.UpdateLabel();
 	}
 
 	private void CreateWindows() {
-	
 		WindowList = new ArrayList<CityLastLightWindow>();
 		WindowList list = new WindowList();
 		WindowList = list.GetWindowList();
@@ -141,18 +115,15 @@ public class GameViewManager {
 	}
 
 	private void CreateGameLoop() {
-		AnimationTimer gameTimer = new AnimationTimer() {		
+		gameTimer = new AnimationTimer() {		
 			@Override
 			public void handle(long now) {
 				MoveSkyBackground();
-				SetClickScoreLabel();
 				WindowTimer();
 				TimeCycle();
-				SetTimeLabel();
-				SetEnergyScoreLabel();
+				UpdateGameLabels();
 				SetScoreBars();
 				GameStatus();
-				SetDateLabel();
 				DayCount();
 			}
 		};
@@ -172,19 +143,6 @@ public class GameViewManager {
 		temp.TurnOnRandomWindow();
 		
 	}	
-	
-	private void SetSkyBackground() {
-		pane1 = new Pane();
-		pane2 = new Pane();
-		
-		ImageView SkyImage1 = new ImageView(SkyBackground);
-		ImageView SkyImage2 = new ImageView(SkyBackground);
-		pane1.getChildren().add(SkyImage1);
-		pane2.getChildren().add(SkyImage2);
-		pane1.setLayoutX(-3500);
-		pane2.setLayoutX(-11300);
-		gamePane.getChildren().addAll(pane1, pane2);
-	}
 	
 	private void SetCityBackground() {
 		cityBG = new Pane();
@@ -227,6 +185,19 @@ public class GameViewManager {
 		enegyscore.ScoreTimer(menuBG);
 	}
 	
+	private void SetSkyBackground() {
+		pane1 = new Pane();
+		pane2 = new Pane();
+		
+		ImageView SkyImage1 = new ImageView(SkyBackground);
+		ImageView SkyImage2 = new ImageView(SkyBackground);
+		pane1.getChildren().add(SkyImage1);
+		pane2.getChildren().add(SkyImage2);
+		pane1.setLayoutX(-3500);
+		pane2.setLayoutX(-11300);
+		gamePane.getChildren().addAll(pane1, pane2);
+	}
+	
 	private void MoveSkyBackground() {
 		pane1.setLayoutX(pane1.getLayoutX() + 0.5);
 		pane2.setLayoutX(pane2.getLayoutX() + 0.5);
@@ -243,13 +214,13 @@ public class GameViewManager {
 	private void TimeCycle() {
 		
 		if(pane1.getLayoutX() >= -1000 && pane1.getLayoutX() <= -990 || pane2.getLayoutX() >= -1000 && pane2.getLayoutX() <= -990) {
-			timeOfDay = "Noite";
+			daytimeInfo = "Noite";
 			night = true;
 			timerSpeed = nightSpeed;
 		}
 		
 		if(pane1.getLayoutX() >= 1350 && pane1.getLayoutX() <= 1360 || pane2.getLayoutX() >= 1350 && pane2.getLayoutX() <= 1360) {
-			timeOfDay = "Dia";
+			daytimeInfo = "Dia";
 			night = false;
 			timerSpeed = daySpeed;			
 		}
@@ -272,7 +243,8 @@ public class GameViewManager {
 		createMenuButton();
 	}
 
-	private void createMenuButton() {
+	private void createMenuButton() {	
+		
 		CityLastLightBotaoVermelho MenuPrincipal = new CityLastLightBotaoVermelho("Menu Principal");
 		MenuPrincipal.setLayoutX(521.5);
 		MenuPrincipal.setLayoutY(400);
@@ -282,8 +254,21 @@ public class GameViewManager {
 			@Override
 			public void handle(ActionEvent event) {
 				menuStage.show();
-				gameStage.hide();
+				gameTimer.stop();
+				GameReset();
+				gameStage.hide();				
 			}
 		});	
-	}	
+	}
+	
+	private void GameReset() {
+		validateDay = true;
+		timerSpeed = daySpeed;
+		daytimeInfo = "Dia";
+		gameOverStopCall = false;
+		night = false;
+		countDay = 0;
+		ClickScore.ResetScore();
+		ScoreBars.ResetPoints();
+	}
 }
