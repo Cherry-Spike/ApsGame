@@ -39,19 +39,24 @@ public class ScoreBars {
 		if(cont > 4) {					
 			energypoints -= Acumulator;// consumo de energia por x janela
 			increanse = false;
-			if(cont >= 8) {
-				Acumulator += 0.001;
-			}else if(cont >= 14) {
-				Acumulator += 0.001;
+			if(cont >= 8 && cont < 14) {
+				Acumulator = 0.2;
+				Acumulator += 0.05;
+			}else if(cont >= 14 && cont < 18) {
+				Acumulator = 0.25;
+				Acumulator += 0.1;
 			}
-			else if(cont >= 18) {
-				Acumulator += 0.001;
+			else if(cont >= 18 && cont < 22) {
+				Acumulator = 0.35;
+				Acumulator += 0.15;
 			}
-			else if(cont >= 22) {
-				Acumulator += 0.002;
+			else if(cont >= 22 && cont < 25) {
+				Acumulator = 0.5;
+				Acumulator += 0.15;
 			}
-			else if(cont >= 24) {
-				Acumulator += 0.003;
+			else if(cont >= 25) {
+				Acumulator = 0.65;
+				Acumulator += 0.15;
 			}else {
 				Acumulator = 0.2;
 			}
