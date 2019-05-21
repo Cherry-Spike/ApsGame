@@ -2,9 +2,9 @@ package model.label;
 
 import model.score.ClickScore;
 
-public class IntLabel extends GameLabel {
+public class ScoreLabel extends GameLabel {
 
-	public IntLabel(String desc, int info, int layoutX, int layoutY, int size) {
+	public ScoreLabel(String desc, int info, int layoutX, int layoutY, int size) {
 		
 		super(desc, layoutX, layoutY, size);
 		intInfo = info;		

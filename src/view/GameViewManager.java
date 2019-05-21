@@ -14,7 +14,7 @@ import model.score.ScoreBars;
 import model.button.CityLastLightBotaoVermelho;
 import model.label.TimeLabel;
 import model.label.EnergyLabel;
-import model.label.IntLabel;
+import model.label.ScoreLabel;
 import model.label.StringLabel;
 import model.score.ClickScore;
 import model.window.CityLastLightWindow;
@@ -44,7 +44,7 @@ public class GameViewManager {
 	public boolean gameOverStopCall = false;
 	private TimeLabel dayCountInfo;
 	private EnergyLabel energyScore;
-	private IntLabel clickScoreInfo;	
+	private ScoreLabel clickScoreInfo;	
 	private StringLabel timeInfo;
 	private String daytimeInfo = "Dia";
 	private int countDay = 0;
@@ -89,7 +89,7 @@ public class GameViewManager {
 		timeInfo = new StringLabel("Horario: ", daytimeInfo, 580, 730, 30);
 		gamePane.getChildren().add(timeInfo);
 		
-		clickScoreInfo = new IntLabel("Luzes Apagadas: ", ClickScore.GetTotalScore(), 990, 734, 25);
+		clickScoreInfo = new ScoreLabel("Luzes Apagadas: ", ClickScore.GetTotalScore(), 990, 734, 25);
 		gamePane.getChildren().add(clickScoreInfo);
 		
 		dayCountInfo = new TimeLabel("Dia: ", countDay, 130, 731, 30);
