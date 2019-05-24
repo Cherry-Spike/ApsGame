@@ -14,6 +14,7 @@ import model.score.ScoreBars;
 import model.button.CityLastLightBotaoVermelho;
 import model.label.TimeLabel;
 import model.label.EnergyLabel;
+import model.label.HappinessLabel;
 import model.label.ScoreLabel;
 import model.label.StringLabel;
 import model.score.ClickScore;
@@ -37,13 +38,14 @@ public class GameViewManager {
 	private Pane menuBG;
 	private Pane bottonMenuBG;
 	private final int nightSpeed = 70;
-	private final int daySpeed = 130;
+	private final int daySpeed = 120;
 	private int timerSpeed = daySpeed;	
 	public static boolean night = false;	
 	public boolean validateDay = true;
 	public boolean gameOverStopCall = false;
 	private TimeLabel dayCountInfo;
 	private EnergyLabel energyScore;
+	private HappinessLabel happinessScore;
 	private ScoreLabel clickScoreInfo;	
 	private StringLabel timeInfo;
 	private String daytimeInfo = "Dia";
@@ -95,8 +97,11 @@ public class GameViewManager {
 		dayCountInfo = new TimeLabel("Dia: ", countDay, 130, 731, 30);
 		gamePane.getChildren().add(dayCountInfo);	
 		
-		energyScore = new EnergyLabel("Pontos de Energia: ", 760, 40, 30);
-		gamePane.getChildren().add(energyScore);		
+		energyScore = new EnergyLabel("", 1267, 530, 28);
+		gamePane.getChildren().add(energyScore);
+		
+		happinessScore = new HappinessLabel("", 1210, 530, 28);
+		gamePane.getChildren().add(happinessScore);
 	}
 	
 	private void UpdateGameLabels() {	
@@ -104,6 +109,7 @@ public class GameViewManager {
 		clickScoreInfo.UpdateLabel();
 		dayCountInfo.UpdateLabel(countDay);
 		energyScore.UpdateLabel();
+		happinessScore.UpdateLabel();
 	}
 
 	private void CreateWindows() {
@@ -131,7 +137,8 @@ public class GameViewManager {
 	}
 			
 	private void GameStatus() {
-		if(ScoreBars.GetEnegyPoints() == 0 && gameOverStopCall == false) {
+		if(ScoreBars.GetEnergyPoints() == 0 && gameOverStopCall == false ||
+		ScoreBars.GetHappinessPoints() == 0 && gameOverStopCall == false) {
 			setGameOverSubScene();
 			gameOverStopCall = true;
 		}	

@@ -5,7 +5,6 @@ import java.util.List;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import model.window.CityLastLightWindow;
-import view.GameViewManager;
 
 public class ScoreBars {
 	private static double energypoints = 100; 
@@ -83,15 +82,15 @@ public class ScoreBars {
 	
 	public void AccumulateHappinessPoints(){
 		
-		if(happinesspoints <= 99 && happinesspoints >= 0) {
-			happinesspoints += 0.036;
+		if(happinesspoints < 100 && happinesspoints >= 0) {
+			happinesspoints += 0.032;
 			Hpoints[(int)happinesspoints].setVisible(true);
 			for(int i=0; i < happinesspoints; i++) {
 				Hpoints[i].setVisible(true);			
 			}			
 		}
-		if(happinesspoints > 100){
-			happinesspoints = 100;
+		if(happinesspoints > 99){
+			happinesspoints = 99;
 		}
 		if(happinesspoints < 0) {
 			happinesspoints = 0;
@@ -108,7 +107,7 @@ public class ScoreBars {
 	
 	public static void RemoveHappinessPoint(){
 		
-		if(happinesspoints < 100) {
+		if(happinesspoints < 100 && happinesspoints > 0) {
 			if(Hpoints[(int)happinesspoints].isVisible() == true) {
 			Hpoints[(int)happinesspoints].setVisible(false);
 			happinesspoints -= 1;
@@ -143,8 +142,12 @@ public class ScoreBars {
 		scoreCont++;
 	}
 	
-	public static double GetEnegyPoints() {
+	public static double GetEnergyPoints() {
 		return energypoints;
+	}
+	
+	public static double GetHappinessPoints() {
+		return happinesspoints;
 	}
 	
 	public static void ResetPoints() {
