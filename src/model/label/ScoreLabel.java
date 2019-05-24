@@ -1,6 +1,8 @@
 package model.label;
 
+import javafx.scene.paint.Color;
 import model.score.ClickScore;
+import view.ViewManager;
 
 public class ScoreLabel extends GameLabel {
 
@@ -13,5 +15,10 @@ public class ScoreLabel extends GameLabel {
 	
 	public void UpdateLabel(){
 		this.setText(desc + ClickScore.GetTotalScore());
-	}	
+	}
+	
+	public void GetFinalScore(){	
+		this.setText(desc + ViewManager.ScorePoints + "    Dias: " + ViewManager.ScoreDay);
+		this.setTextFill(Color.BLACK);	
+	}
 }

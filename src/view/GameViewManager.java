@@ -49,7 +49,7 @@ public class GameViewManager {
 	private ScoreLabel clickScoreInfo;	
 	private StringLabel timeInfo;
 	private String daytimeInfo = "Dia";
-	private int countDay = 0;
+	public static int countDay = 0;
 	private static final int WIDTH = 1314;
 	private static final int HEIGTH = 790;
 	private final String SkyBackground = "view/resources/SkyBG.png";
@@ -269,6 +269,9 @@ public class GameViewManager {
 	}
 	
 	private void GameReset() {
+		ViewManager.ScorePoints = ClickScore.GetTotalScore();
+		ViewManager.ScoreDay = countDay;
+		ViewManager.UpdateScore();
 		validateDay = true;
 		timerSpeed = daySpeed;
 		daytimeInfo = "Dia";

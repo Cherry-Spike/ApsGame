@@ -17,9 +17,14 @@ import model.button.CityLastLightBotao;
 import model.button.CityLastLightBotaoAmarelo;
 import model.button.CityLastLightBotaoVerde;
 import model.button.CityLastLightBotaoVoltar;
+import model.label.ScoreLabel;
+import model.score.ClickScore;
 
 public class ViewManager {
 	
+	private static ScoreLabel totalScorelabel;
+	public static int ScoreDay = 0;
+	public static int ScorePoints = 0;
 	private static final int WIDTH = 1314;
 	private static final int HEIGTH = 790;
 	private static final double Botao_PosicaoX = 521.5;
@@ -61,7 +66,7 @@ public class ViewManager {
 	private void setMenu() {					
 		createBotaoIniciar();		
 		createBotaoPontuacao();		
-		createBotaoSair();			
+		createBotaoSair();		
 	}
 	
 	private void createBotaoIniciar() {		
@@ -104,6 +109,16 @@ public class ViewManager {
 		});
 	}
 	
+	private void LabelPontuacao() {		
+		totalScorelabel = new ScoreLabel("Luzes Apagadas: ", ClickScore.GetTotalScore(), 120, 175, 35);
+		totalScorelabel.GetFinalScore();
+		pontuacaoSubScene.getPane().getChildren().add(totalScorelabel);		
+	}
+	
+	public static void UpdateScore() {
+		totalScorelabel.GetFinalScore();
+	}
+	
 	//Titulo	
 	private void setTitle() {
 		final ImageView selectedImage = new ImageView();
@@ -124,6 +139,7 @@ public class ViewManager {
 	private void setSubScene() {
 		pontuacaoSubScene = new PontuacaoSubScene();	
 		mainPane.getChildren().add(pontuacaoSubScene);
+		LabelPontuacao();
 		createBotaoVoltar();
 	}
 	
