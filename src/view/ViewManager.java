@@ -131,7 +131,7 @@ public class ViewManager {
 	
 	//Background & Scenes
 	private void setBackground() {		
-		Image backgroundImage = new Image("/view/resources/CityStartMenu.png", 1314,800,false,true); //Background Provisorio!!!;
+		Image backgroundImage = new Image("/view/resources/CityStartMenu.png", 1314,800,false,true);
 		BackgroundImage background = new BackgroundImage(backgroundImage, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, null);
 		mainPane.setBackground(new Background(background));		
 	}
